@@ -1,0 +1,42 @@
+[gd_scene load_steps=9 format=3 uid="uid://c584w30ppcrh7"]
+
+[ext_resource type="Material" uid="uid://dy5bxs0e01r4k" path="res://mats/doorway_mat.tres" id="1_ipgwk"]
+[ext_resource type="Material" uid="uid://ciqw250pb3oov" path="res://mats/floor_mat.tres" id="2_pc4cc"]
+[ext_resource type="Material" uid="uid://c4h1s85rbr0pn" path="res://mats/pit_mat.tres" id="2_xd1f0"]
+[ext_resource type="Material" uid="uid://cnkb3dn3cfdru" path="res://mats/wall_mat.tres" id="3_lkthc"]
+[ext_resource type="Script" path="res://addons/level_block/level_block_node.gd" id="5_vgmax"]
+[ext_resource type="Material" uid="uid://c71yladfjhgud" path="res://addons/level_block/default_material.tres" id="6_rexdg"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_twanm"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pof5m"]
+
+[node name="DungeonTiles" type="Node3D"]
+
+[node name="Floor Tile" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_twanm")
+surface_material_override/0 = ExtResource("2_pc4cc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor Tile"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 1, 0)
+shape = SubResource("BoxShape3D_pof5m")
+
+[node name="Wall Tile" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.24274, 0, 0)
+mesh = SubResource("BoxMesh_twanm")
+surface_material_override/0 = ExtResource("3_lkthc")
+
+[node name="Doorway Tile" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.57945, 0, 0)
+mesh = SubResource("BoxMesh_twanm")
+surface_material_override/0 = ExtResource("1_ipgwk")
+
+[node name="Pit Tile" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.56549, 0, 0)
+mesh = SubResource("BoxMesh_twanm")
+surface_material_override/0 = ExtResource("2_xd1f0")
+
+[node name="LevelBlock" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.64251, 0, 0)
+script = ExtResource("5_vgmax")
+material = ExtResource("6_rexdg")
