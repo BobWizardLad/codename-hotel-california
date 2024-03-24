@@ -1,3 +1,19 @@
-[gd_scene format=3 uid="uid://d1fg8ja3fbfom"]
+[gd_scene load_steps=4 format=3 uid="uid://d1fg8ja3fbfom"]
+
+[ext_resource type="PackedScene" uid="uid://cu1fwe52xa2il" path="res://Player.tscn" id="1_1f0os"]
+[ext_resource type="PackedScene" uid="uid://dcckkqm76twbs" path="res://Enemy.tscn" id="2_ce0b1"]
+[ext_resource type="PackedScene" uid="uid://bettcn2xxv2ok" path="res://floor_01.tscn" id="2_sxcys"]
 
 [node name="GameController" type="Node3D"]
+
+[node name="Player" parent="." instance=ExtResource("1_1f0os")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 1, 0)
+
+[node name="UnitController" type="Node3D" parent="."]
+
+[node name="Enemy" parent="UnitController" instance=ExtResource("2_ce0b1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 1, -6)
+
+[node name="TurnController" type="Node3D" parent="."]
+
+[node name="Floor01" parent="." instance=ExtResource("2_sxcys")]

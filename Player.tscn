@@ -25,7 +25,9 @@ target_position = Vector3(-1.5, 0, 0)
 [node name="CastBackwards" type="RayCast3D" parent="."]
 target_position = Vector3(1.5, 0, 0)
 
-[node name="Player" type="Area3D" parent="."]
+[node name="AreaPlayer" type="Area3D" parent="."]
+priority = 1
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
+[node name="Player" type="CollisionShape3D" parent="AreaPlayer"]
+transform = Transform3D(1.4, 0, 0, 0, 1.4, 0, 0, 0, 1.4, 0, 0, 0)
 shape = SubResource("BoxShape3D_itav6")
