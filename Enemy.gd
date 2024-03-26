@@ -6,6 +6,8 @@ extends Node3D
 @onready var CAST_EAST: RayCast3D = $CastEast # Dir 1
 @onready var CAST_SOUTH: RayCast3D = $CastSouth # Dir 2
 @onready var CAST_WEST: RayCast3D = $CastWest # Dir 3
+@onready var COMBAT_COMPONENT: Node = $CombatComponent # Unit Combat Controller
+@onready var SPRITE: AnimatedSprite3D = $Sprite # Visual Component
 
 @export var TWEEN_FACTOR = 0.3 # Affects camera interpolation speed
 @export var GRID_SCALE = 2 # Factor for movement; constrains grid
@@ -17,7 +19,11 @@ func _ready():
 	pass
 
 func _process(_delta):
-	pass
+	var health_modulate = COMBAT_COMPONENT.health * .01
+	SPRITE.modulate = Color(1.0, health_modulate, health_modulate, 1.0)
+	
+	if COMBAT_COMPONENT.health == 0:
+		queue_free()
 
 # move_step takes a target location and will move the enemy towards it
 # target location is detemined by the greatest distance to travel. i.e. if

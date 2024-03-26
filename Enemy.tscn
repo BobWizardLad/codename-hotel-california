@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://dcckkqm76twbs"]
+[gd_scene load_steps=8 format=3 uid="uid://dcckkqm76twbs"]
 
 [ext_resource type="Script" path="res://Enemy.gd" id="1_7wvu1"]
 [ext_resource type="Texture2D" uid="uid://c47s16kbsj4mt" path="res://guySpooky.png" id="2_dht64"]
+[ext_resource type="Script" path="res://CombatComponent.gd" id="3_2r1i8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mtkaw"]
 atlas = ExtResource("2_dht64")
@@ -25,7 +26,7 @@ animations = [{
 "speed": 4.0
 }]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_idvv6"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_dogcu"]
 
 [node name="Enemy" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, 2)
@@ -64,7 +65,12 @@ collide_with_areas = true
 target_position = Vector3(0, 0, 1.5)
 collide_with_areas = true
 
+[node name="CombatComponent" type="Node" parent="."]
+script = ExtResource("3_2r1i8")
+
 [node name="Area" type="Area3D" parent="."]
+priority = 1
 
 [node name="Shape" type="CollisionShape3D" parent="Area"]
-shape = SubResource("BoxShape3D_idvv6")
+transform = Transform3D(1.4, 0, 0, 0, 1.4, 0, 0, 0, 1.4, 0, 0, 0)
+shape = SubResource("BoxShape3D_dogcu")

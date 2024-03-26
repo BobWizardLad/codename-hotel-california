@@ -5,6 +5,7 @@ extends Node3D
 @onready var CAMERA := $PlayerCameraView
 @onready var CAST_FORWARD := $CastForward
 @onready var CAST_BACKWARDS := $CastBackwards
+@onready var COMBAT_COMPONENT := $CombatComponent
 
 # Constant Scalar Values
 @export var GRID_SCALE = 2 # Factor for movement; constrains grid
@@ -25,7 +26,8 @@ func _process(_delta):
 
 func _unhandled_input(event):
 	player_move(event)
-	
+	if event.is_action_pressed("Attack") and CAST_FORWARD.is_colliding() and CAST_FORWARD.get_collider().get_parent().name == "Enemy":
+		COMBAT_COMPONENT.attack(CAST_FORWARD.get_collider().get_parent().find_child("CombatComponent"))
 
 func player_move(event):
 	if motion_tween is Tween: # Halt another tween if one is running

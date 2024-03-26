@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://cu1fwe52xa2il"]
+[gd_scene load_steps=4 format=3 uid="uid://cu1fwe52xa2il"]
 
 [ext_resource type="Script" path="res://PlayerController.gd" id="1_8jn2h"]
+[ext_resource type="Script" path="res://CombatComponent.gd" id="2_el43b"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_itav6"]
 
@@ -26,6 +27,9 @@ collide_with_areas = true
 [node name="CastBackwards" type="RayCast3D" parent="."]
 target_position = Vector3(1.5, 0, 0)
 collide_with_areas = true
+
+[node name="CombatComponent" type="Node" parent="."]
+script = ExtResource("2_el43b")
 
 [node name="Area" type="Area3D" parent="."]
 priority = 1
