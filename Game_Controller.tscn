@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://d1fg8ja3fbfom"]
+[gd_scene load_steps=9 format=3 uid="uid://d1fg8ja3fbfom"]
 
 [ext_resource type="PackedScene" uid="uid://cu1fwe52xa2il" path="res://Player.tscn" id="1_1f0os"]
 [ext_resource type="Script" path="res://Game_Controller.gd" id="1_6i7ao"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://ew6uj46j2ij2" path="res://Level01.tscn" id="4_25vxw"]
 [ext_resource type="Script" path="res://TurnController.gd" id="4_58lo4"]
 [ext_resource type="PackedScene" uid="uid://bh25gofgorkax" path="res://text_overlay.tscn" id="5_4vo3a"]
+[ext_resource type="PackedScene" uid="uid://7j8vc8u5u6n7" path="res://player_ui.tscn" id="8_mdnoh"]
 
 [node name="GameController" type="Node3D"]
 script = ExtResource("1_6i7ao")
@@ -26,6 +27,9 @@ script = ExtResource("4_58lo4")
 [node name="DungeonTiles" parent="." instance=ExtResource("4_25vxw")]
 
 [node name="TextOverlay" parent="." instance=ExtResource("5_4vo3a")]
+visible = false
+
+[node name="PlayerUI" parent="." instance=ExtResource("8_mdnoh")]
 
 [connection signal="turn_end" from="Player" to="TurnController" method="_player_turn_end"]
 [connection signal="turn_end" from="UnitController" to="TurnController" method="_enemy_turn_end"]
