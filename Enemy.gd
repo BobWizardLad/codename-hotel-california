@@ -17,8 +17,7 @@ func _ready():
 	pass
 
 func _process(_delta):
-	if Input.is_action_just_pressed("ui_accept"):
-		move_step(Vector3(0,0,0))
+	pass
 
 # move_step takes a target location and will move the enemy towards it
 # target location is detemined by the greatest distance to travel. i.e. if

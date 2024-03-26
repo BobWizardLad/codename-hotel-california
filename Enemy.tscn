@@ -64,7 +64,7 @@ collide_with_areas = true
 target_position = Vector3(0, 0, 1.5)
 collide_with_areas = true
 
-[node name="Area3D" type="Area3D" parent="."]
+[node name="Area" type="Area3D" parent="."]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+[node name="Shape" type="CollisionShape3D" parent="Area"]
 shape = SubResource("BoxShape3D_idvv6")
