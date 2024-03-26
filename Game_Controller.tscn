@@ -14,7 +14,7 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 1, 
 [node name="UnitController" type="Node3D" parent="."]
 
 [node name="Enemy" parent="UnitController" instance=ExtResource("2_ce0b1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 1, -6)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 20)
 
 [node name="TurnController" type="Node3D" parent="."]
 
