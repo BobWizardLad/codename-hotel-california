@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dcckkqm76twbs"]
+[gd_scene load_steps=7 format=3 uid="uid://dcckkqm76twbs"]
 
 [ext_resource type="Script" path="res://Enemy.gd" id="1_7wvu1"]
 [ext_resource type="Texture2D" uid="uid://c47s16kbsj4mt" path="res://guySpooky.png" id="2_dht64"]
@@ -25,6 +25,8 @@ animations = [{
 "speed": 4.0
 }]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_idvv6"]
+
 [node name="Enemy" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, 2)
 script = ExtResource("1_7wvu1")
@@ -48,12 +50,21 @@ omni_shadow_mode = 0
 
 [node name="CastNorth" type="RayCast3D" parent="."]
 target_position = Vector3(-1.5, 0, 0)
+collide_with_areas = true
 
 [node name="CastEast" type="RayCast3D" parent="."]
 target_position = Vector3(0, 0, -1.5)
+collide_with_areas = true
 
 [node name="CastSouth" type="RayCast3D" parent="."]
 target_position = Vector3(1.5, 0, 0)
+collide_with_areas = true
 
 [node name="CastWest" type="RayCast3D" parent="."]
 target_position = Vector3(0, 0, 1.5)
+collide_with_areas = true
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_idvv6")

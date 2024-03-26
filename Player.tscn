@@ -21,9 +21,11 @@ omni_shadow_mode = 0
 
 [node name="CastForward" type="RayCast3D" parent="."]
 target_position = Vector3(-1.5, 0, 0)
+collide_with_areas = true
 
 [node name="CastBackwards" type="RayCast3D" parent="."]
 target_position = Vector3(1.5, 0, 0)
+collide_with_areas = true
 
 [node name="AreaPlayer" type="Area3D" parent="."]
 priority = 1

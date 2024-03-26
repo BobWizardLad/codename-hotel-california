@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://d1fg8ja3fbfom"]
+[gd_scene load_steps=6 format=3 uid="uid://d1fg8ja3fbfom"]
 
 [ext_resource type="PackedScene" uid="uid://cu1fwe52xa2il" path="res://Player.tscn" id="1_1f0os"]
 [ext_resource type="Script" path="res://Game_Controller.gd" id="1_6i7ao"]
 [ext_resource type="PackedScene" uid="uid://dcckkqm76twbs" path="res://Enemy.tscn" id="2_ce0b1"]
 [ext_resource type="PackedScene" uid="uid://ew6uj46j2ij2" path="res://Level01.tscn" id="4_25vxw"]
+[ext_resource type="PackedScene" path="res://text_overlay.tscn" id="5_4vo3a"]
 
 [node name="GameController" type="Node3D"]
 script = ExtResource("1_6i7ao")
@@ -19,3 +20,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 20)
 [node name="TurnController" type="Node3D" parent="."]
 
 [node name="DungeonTiles" parent="." instance=ExtResource("4_25vxw")]
+
+[node name="TextOverlay" parent="." instance=ExtResource("5_4vo3a")]
