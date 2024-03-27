@@ -3,7 +3,7 @@
 [ext_resource type="MeshLibrary" uid="uid://ckn3vcy2bt7nh" path="res://dungeon_tiles.tres" id="1_g5654"]
 [ext_resource type="Texture2D" uid="uid://ccxtxu2nvstb8" path="res://dogPainting.png" id="2_wnetx"]
 
-[node name="DungeonTiles" type="GridMap"]
+[node name="Level01" type="GridMap"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -1)
 mesh_library = ExtResource("1_g5654")
 cell_center_y = false
