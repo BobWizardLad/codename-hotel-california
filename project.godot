@@ -15,10 +15,6 @@ run/main_scene="res://Game_Controller.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
-[editor_plugins]
-
-enabled=PackedStringArray("res://addons/level_block/plugin.cfg")
-
 [input]
 
 Move_Forward={
