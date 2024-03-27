@@ -24,7 +24,7 @@ func _ready():
 func _process(_delta):
 	pass
 
-func _unhandled_input(event):
+func _input(event):
 	player_move(event)
 	if event.is_action_pressed("Attack") and CAST_FORWARD.is_colliding() and CAST_FORWARD.get_collider().get_parent().name == "Enemy":
 		COMBAT_COMPONENT.attack(CAST_FORWARD.get_collider().get_parent().find_child("CombatComponent"))
