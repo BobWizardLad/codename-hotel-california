@@ -10,5 +10,6 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if Input.is_action_just_pressed("ui_accept"):
-		get_child(0).move_step(Vector3(0,0,0))
-		emit_signal("turn_end")
+		if get_child(0) != null:
+			get_child(0).move_step(Vector3(0,0,0))
+			emit_signal("turn_end")
