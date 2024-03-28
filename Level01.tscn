@@ -6,6 +6,7 @@
 [node name="DungeonTiles" type="GridMap"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -1)
 mesh_library = ExtResource("1_g5654")
+cell_size = Vector3(1.999, 2, 1.999)
 cell_center_y = false
 bake_navigation = true
 data = {
