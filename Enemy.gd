@@ -13,6 +13,7 @@ extends Node3D
 @export var GRID_SCALE = 2 # Factor for movement; constrains grid
 
 var motion_tween: Tween
+var is_player_visible: bool
 
 var target: Vector3i
 
@@ -53,3 +54,11 @@ func move_step():
 		elif target.z < global_transform.origin.z and not CAST_EAST.is_colliding():
 			motion_tween = create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN_OUT)
 			motion_tween.tween_property(self, "transform", transform.translated(Vector3(0, 0, -GRID_SCALE)), TWEEN_FACTOR)
+
+func _on_player_visible_screen_entered():
+	is_player_visible = true
+	print("NOW YOU SEE ME")
+
+func _on_player_visible_screen_exited():
+	is_player_visible = false
+	print("NOW YOU DONT")

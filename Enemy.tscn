@@ -74,3 +74,9 @@ priority = 1
 [node name="Shape" type="CollisionShape3D" parent="Area"]
 transform = Transform3D(1.4, 0, 0, 0, 1.4, 0, 0, 0, 1.4, 0, 0, 0)
 shape = SubResource("BoxShape3D_dogcu")
+
+[node name="PlayerVisible" type="VisibleOnScreenNotifier3D" parent="."]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
+
+[connection signal="screen_entered" from="PlayerVisible" to="." method="_on_player_visible_screen_entered"]
+[connection signal="screen_exited" from="PlayerVisible" to="." method="_on_player_visible_screen_exited"]
