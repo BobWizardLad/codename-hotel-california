@@ -1,11 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://ew6uj46j2ij2"]
 
-[ext_resource type="MeshLibrary" uid="uid://ckn3vcy2bt7nh" path="res://dungeon_tiles.tres" id="1_g5654"]
-[ext_resource type="Texture2D" uid="uid://ccxtxu2nvstb8" path="res://dogPainting.png" id="2_wnetx"]
+[ext_resource type="MeshLibrary" uid="uid://ckn3vcy2bt7nh" path="res://assets/meshes/dungeon_tiles.tres" id="1_ukeqd"]
+[ext_resource type="Texture2D" uid="uid://ccxtxu2nvstb8" path="res://assets/sprites/dogPainting.png" id="2_15uib"]
 
 [node name="Level01" type="GridMap"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -1)
-mesh_library = ExtResource("1_g5654")
+mesh_library = ExtResource("1_ukeqd")
 cell_center_y = false
 bake_navigation = true
 data = {
@@ -17,4 +17,4 @@ metadata/_editor_floor_ = Vector3(0, 0, 0)
 transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 1, 1, 0.01)
 shaded = true
 alpha_scissor_threshold = 0.51
-texture = ExtResource("2_wnetx")
+texture = ExtResource("2_15uib")

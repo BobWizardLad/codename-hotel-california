@@ -1,5 +1,5 @@
 [gd_scene load_steps=2 format=3 uid="uid://djkkindfaj0rd"]
 
-[ext_resource type="PackedScene" uid="uid://bi4cr2a8omixx" path="res://dungeon_tiles.glb" id="1_gvmag"]
+[ext_resource type="PackedScene" uid="uid://bi4cr2a8omixx" path="res://assets/meshes/dungeon_tiles.glb" id="1_gvmag"]
 
 [node name="dungeon_tiles" instance=ExtResource("1_gvmag")]

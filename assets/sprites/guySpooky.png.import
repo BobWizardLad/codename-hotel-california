@@ -2,17 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cwxukgdwpv3mp"
-path="res://.godot/imported/dungeon_tiles_roomSheet.png-a822402f1e8509da0646457dd7c053a8.ctex"
+uid="uid://c47s16kbsj4mt"
+path="res://.godot/imported/guySpooky.png-64b227be36569665dc8d25ba1729ceb7.ctex"
 metadata={
 "vram_texture": false
 }
-generator_parameters={}
 
 [deps]
 
-source_file="res://dungeon_tiles_roomSheet.png"
-dest_files=["res://.godot/imported/dungeon_tiles_roomSheet.png-a822402f1e8509da0646457dd7c053a8.ctex"]
+source_file="res://assets/sprites/guySpooky.png"
+dest_files=["res://.godot/imported/guySpooky.png-64b227be36569665dc8d25ba1729ceb7.ctex"]
 
 [params]
 

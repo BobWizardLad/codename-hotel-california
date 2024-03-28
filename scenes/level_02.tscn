@@ -1,11 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://cmjwry21xcisu"]
 
-[ext_resource type="MeshLibrary" uid="uid://ckn3vcy2bt7nh" path="res://dungeon_tiles.tres" id="1_iojxu"]
-[ext_resource type="Texture2D" uid="uid://ccxtxu2nvstb8" path="res://dogPainting.png" id="2_nxhjh"]
+[ext_resource type="MeshLibrary" uid="uid://ckn3vcy2bt7nh" path="res://assets/meshes/dungeon_tiles.tres" id="1_cjhfi"]
+[ext_resource type="Texture2D" uid="uid://ccxtxu2nvstb8" path="res://assets/sprites/dogPainting.png" id="2_wg4ju"]
 
 [node name="Level02" type="GridMap"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -1)
-mesh_library = ExtResource("1_iojxu")
+mesh_library = ExtResource("1_cjhfi")
 cell_size = Vector3(1.999, 2, 1.999)
 cell_center_y = false
 data = {
@@ -15,4 +15,4 @@ data = {
 [node name="Dog" type="Sprite3D" parent="."]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 13, 1, 0)
 shaded = true
-texture = ExtResource("2_nxhjh")
+texture = ExtResource("2_wg4ju")

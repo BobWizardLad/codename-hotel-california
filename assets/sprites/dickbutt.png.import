@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://i4qkyc0h7j7v"
-path.s3tc="res://.godot/imported/dickbutt.png-ed77e9373b922339485ea25d4c1a8f56.s3tc.ctex"
+path.s3tc="res://.godot/imported/dickbutt.png-e16a44039e7af36ec557600e10c5ac3e.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://dickbutt.png"
-dest_files=["res://.godot/imported/dickbutt.png-ed77e9373b922339485ea25d4c1a8f56.s3tc.ctex"]
+source_file="res://assets/sprites/dickbutt.png"
+dest_files=["res://.godot/imported/dickbutt.png-e16a44039e7af36ec557600e10c5ac3e.s3tc.ctex"]
 
 [params]
 

@@ -1,6 +1,6 @@
 [gd_resource type="MeshLibrary" load_steps=230 format=3 uid="uid://ckn3vcy2bt7nh"]
 
-[ext_resource type="Texture2D" uid="uid://cwxukgdwpv3mp" path="res://dungeon_tiles_roomSheet.png" id="1_uvhuh"]
+[ext_resource type="Texture2D" uid="uid://cwxukgdwpv3mp" path="res://assets/meshes/dungeon_tiles_roomSheet.png" id="1_uvhuh"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6366o"]
 resource_name = "Material.001"

@@ -1,13 +1,13 @@
 [gd_scene load_steps=9 format=3 uid="uid://d1fg8ja3fbfom"]
 
-[ext_resource type="PackedScene" uid="uid://cu1fwe52xa2il" path="res://Player.tscn" id="1_1f0os"]
-[ext_resource type="Script" path="res://Game_Controller.gd" id="1_6i7ao"]
-[ext_resource type="PackedScene" uid="uid://dcckkqm76twbs" path="res://Enemy.tscn" id="2_ce0b1"]
-[ext_resource type="Script" path="res://UnitController.gd" id="3_nt3wb"]
-[ext_resource type="Script" path="res://TurnController.gd" id="4_58lo4"]
-[ext_resource type="PackedScene" uid="uid://bh25gofgorkax" path="res://text_overlay.tscn" id="5_4vo3a"]
-[ext_resource type="PackedScene" uid="uid://cmjwry21xcisu" path="res://level_02.tscn" id="8_5muem"]
-[ext_resource type="Script" path="res://NavigationService.gd" id="8_r6v64"]
+[ext_resource type="PackedScene" uid="uid://cu1fwe52xa2il" path="res://scenes/Player.tscn" id="1_1f0os"]
+[ext_resource type="Script" path="res://assets/scripts/Game_Controller.gd" id="1_6i7ao"]
+[ext_resource type="PackedScene" uid="uid://dcckkqm76twbs" path="res://scenes/Enemy.tscn" id="2_ce0b1"]
+[ext_resource type="Script" path="res://assets/scripts/UnitController.gd" id="3_nt3wb"]
+[ext_resource type="Script" path="res://assets/scripts/TurnController.gd" id="4_58lo4"]
+[ext_resource type="PackedScene" uid="uid://bh25gofgorkax" path="res://scenes/text_overlay.tscn" id="5_4vo3a"]
+[ext_resource type="PackedScene" uid="uid://cmjwry21xcisu" path="res://scenes/level_02.tscn" id="8_5muem"]
+[ext_resource type="Script" path="res://assets/scripts/NavigationService.gd" id="8_r6v64"]
 
 [node name="GameController" type="Node3D"]
 script = ExtResource("1_6i7ao")

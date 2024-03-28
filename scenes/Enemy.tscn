@@ -1,15 +1,15 @@
 [gd_scene load_steps=8 format=3 uid="uid://dcckkqm76twbs"]
 
-[ext_resource type="Script" path="res://Enemy.gd" id="1_7wvu1"]
-[ext_resource type="Texture2D" uid="uid://c47s16kbsj4mt" path="res://guySpooky.png" id="2_dht64"]
-[ext_resource type="Script" path="res://CombatComponent.gd" id="3_2r1i8"]
+[ext_resource type="Script" path="res://assets/scripts/Enemy.gd" id="1_7wvu1"]
+[ext_resource type="Texture2D" uid="uid://c47s16kbsj4mt" path="res://assets/sprites/guySpooky.png" id="2_p33im"]
+[ext_resource type="Script" path="res://assets/scripts/CombatComponent.gd" id="3_2r1i8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mtkaw"]
-atlas = ExtResource("2_dht64")
+atlas = ExtResource("2_p33im")
 region = Rect2(0, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_605iv"]
-atlas = ExtResource("2_dht64")
+atlas = ExtResource("2_p33im")
 region = Rect2(64, 0, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_futn1"]
