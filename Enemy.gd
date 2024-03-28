@@ -12,8 +12,9 @@ extends Node3D
 @export var TWEEN_FACTOR = 0.3 # Affects camera interpolation speed
 @export var GRID_SCALE = 2 # Factor for movement; constrains grid
 
-var motion_tween
-var rand
+var motion_tween: Tween
+
+var target: Vector3i
 
 func _ready():
 	pass
@@ -25,13 +26,16 @@ func _process(_delta):
 	if COMBAT_COMPONENT.health == 0:
 		queue_free()
 
+func set_target(target_val: Vector3i):
+	target = target_val
+
 # move_step takes a target location and will move the enemy towards it
 # target location is detemined by the greatest distance to travel. i.e. if
 # the location is 4, 8 (x, z) and the target is 12, -2, the enemy will move
 # in the +z direction because that is the biggest distance it has to travel.
 # if the favored direction is blocked, it will pick the next unblocked direction
 # (+x, +z, -x, -z priority order)
-func move_step(target: Vector3):
+func move_step():
 	if motion_tween is Tween: # Halt another tween if one is running
 		if motion_tween.is_running():
 			return

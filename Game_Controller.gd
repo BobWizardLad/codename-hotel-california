@@ -15,6 +15,10 @@ func _ready():
 func _process(_delta):
 	sprite_facing()
 
+func _input(event):
+	if event.is_action_pressed("ui_accept"):
+		UNIT_CONTROLLER.on_enemy_turn()
+
 # This function will orient all enemies' sprites on the map
 # towards the player's location, creating an effect of the
 # player always seeing the sprite of enemies.

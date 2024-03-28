@@ -1,14 +1,14 @@
 extends Node3D
 
 # Is it the player's turn?
-@export var player_turn: bool = true
+@export var player_turn: bool
 
 signal take_enemy_turn
 signal take_player_turn
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	player_turn = true
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

@@ -1,14 +1,18 @@
 extends Node3D
 
+@onready var NAVIGATION_SERVICE := get_node("NavigationService")
+
 signal turn_end
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	if Input.is_action_just_pressed("ui_accept"):
-		if get_child(0) != null:
-			get_child(0).move_step(Vector3(0,0,0))
-			emit_signal("turn_end")
+func on_enemy_turn():
+	for each in get_children():
+		# Determine if player can see enemy - Enemy Func
+		# Create Route, set in enemy
+		# Execute attack if player is adjacent - Enemy Func x2
+		# if player not adjacent, call move step 
+		each.move_step()
+	emit_signal("turn_end")
