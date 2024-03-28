@@ -11,7 +11,8 @@ signal turn_end
 func _ready():
 	pass # Replace with function body.
 
-func on_enemy_turn():
+
+func _on_enemy_turn():
 	for each in get_children():
 		
 		if each.is_player_visible:

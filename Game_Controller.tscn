@@ -4,9 +4,9 @@
 [ext_resource type="Script" path="res://Game_Controller.gd" id="1_6i7ao"]
 [ext_resource type="PackedScene" uid="uid://dcckkqm76twbs" path="res://Enemy.tscn" id="2_ce0b1"]
 [ext_resource type="Script" path="res://UnitController.gd" id="3_nt3wb"]
-[ext_resource type="PackedScene" uid="uid://ew6uj46j2ij2" path="res://Level01.tscn" id="4_25vxw"]
 [ext_resource type="Script" path="res://TurnController.gd" id="4_58lo4"]
 [ext_resource type="PackedScene" uid="uid://bh25gofgorkax" path="res://text_overlay.tscn" id="5_4vo3a"]
+[ext_resource type="PackedScene" uid="uid://cmjwry21xcisu" path="res://level_02.tscn" id="8_5muem"]
 [ext_resource type="Script" path="res://NavigationService.gd" id="8_r6v64"]
 
 [node name="GameController" type="Node3D"]
@@ -21,16 +21,18 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 1, 
 script = ExtResource("3_nt3wb")
 
 [node name="Enemy" parent="UnitController" instance=ExtResource("2_ce0b1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, 20)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 1, 4)
 
 [node name="TurnController" type="Node3D" parent="."]
 script = ExtResource("4_58lo4")
 
-[node name="Level01" parent="." instance=ExtResource("4_25vxw")]
-
 [node name="NavigationService" type="Node" parent="."]
 script = ExtResource("8_r6v64")
+
+[node name="Level02" parent="." instance=ExtResource("8_5muem")]
 
 [connection signal="child_order_changed" from="." to="NavigationService" method="_on_game_child_order_changed"]
 [connection signal="turn_end" from="Player" to="TurnController" method="_player_turn_end"]
 [connection signal="turn_end" from="UnitController" to="TurnController" method="_enemy_turn_end"]
+[connection signal="take_enemy_turn" from="TurnController" to="UnitController" method="_on_enemy_turn"]
+[connection signal="take_player_turn" from="TurnController" to="Player" method="_on_player_turn"]

@@ -2,16 +2,19 @@ extends Node3D
 
 @onready var UNIT_CONTROLLER := $UnitController
 @onready var NAVIGATION_SERVICE := $NavigationService
+@onready var TURN_CONTROLLER := $TurnController
 @onready var PLAYER := $Player
 @onready var level: GridMap
 
 func _ready():
-	level = find_child("Level01")
+	level = find_child("Level02")
 	
 	# Handling Navservice here
 	NAVIGATION_SERVICE.set_current_level(level)
 	NAVIGATION_SERVICE.build_pathfinding()
 	NAVIGATION_SERVICE.build_navigation()
+	
+	TURN_CONTROLLER.emit_signal("take_player_turn")
 
 func _process(_delta):
 	sprite_facing()

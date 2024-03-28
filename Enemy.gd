@@ -52,11 +52,13 @@ func move_step() -> bool:
 			motion_tween = create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN_OUT)
 			motion_tween.tween_property(self, "transform", transform.translated(Vector3(GRID_SCALE, 0, 0)), TWEEN_FACTOR)
 			current_path.remove_at(0) # Clean up the path step we just moved to
+			await motion_tween.finished
 			return true
 		elif target.x < global_transform.origin.x and not CAST_NORTH.is_colliding():
 			motion_tween = create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN_OUT)
 			motion_tween.tween_property(self, "transform", transform.translated(Vector3(-GRID_SCALE, 0, 0)), TWEEN_FACTOR)
 			current_path.remove_at(0) # Clean up the path step we just moved to
+			await motion_tween.finished
 			return true
 		else: 
 			return false
@@ -65,11 +67,13 @@ func move_step() -> bool:
 			motion_tween = create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN_OUT)
 			motion_tween.tween_property(self, "transform", transform.translated(Vector3(0, 0, GRID_SCALE)), TWEEN_FACTOR)
 			current_path.remove_at(0) # Clean up the path step we just moved to
+			await motion_tween.finished
 			return true
 		elif target.z < global_transform.origin.z and not CAST_EAST.is_colliding():
 			motion_tween = create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN_OUT)
 			motion_tween.tween_property(self, "transform", transform.translated(Vector3(0, 0, -GRID_SCALE)), TWEEN_FACTOR)
 			current_path.remove_at(0) # Clean up the path step we just moved to
+			await motion_tween.finished
 			return true
 		else:
 			return false

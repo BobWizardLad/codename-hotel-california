@@ -28,7 +28,7 @@ animations = [{
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dogcu"]
 
-[node name="Enemy" type="Node3D"]
+[node name="GuySpooky" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, 2)
 script = ExtResource("1_7wvu1")
 

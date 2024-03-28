@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://cmjwry21xcisu"]
+
+[ext_resource type="MeshLibrary" uid="uid://ckn3vcy2bt7nh" path="res://dungeon_tiles.tres" id="1_iojxu"]
+[ext_resource type="Texture2D" uid="uid://ccxtxu2nvstb8" path="res://dogPainting.png" id="2_nxhjh"]
+
+[node name="Level02" type="GridMap"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -1)
+mesh_library = ExtResource("1_iojxu")
+cell_size = Vector3(1.999, 2, 1.999)
+cell_center_y = false
+data = {
+"cells": PackedInt32Array(0, 0, 1, 1, 0, 17, 3, 0, 1441823, 2, 0, 6, 0, 2, 1048582, 0, 1, 1048595, 1, 1, 1048579, 2, 1, 1048585, 3, 1, 1441792, 2, 2, 655360, 1, 2, 655377, 3, 2, 655367, 0, 3, 1441805, 0, 4, 1441796, 0, 6, 655390, 0, 5, 1048576, 1, 5, 655375, 2, 5, 655363, 3, 5, 655363, 4, 5, 655369, 2, 4, 32, 2, 6, 1048608, 3, 6, 655366, 4, 6, 655360, 6, 6, 655378, 7, 6, 655391, 7, 4, 1441823, 3, 4, 0, 4, 4, 0, 5, 4, 17, 5, 5, 3, 6, 4, 0, 8, 5, 1441817, 5, 6, 655377, 6, 5, 655363, 7, 5, 655363, 7, 0, 1441816, 7, 2, 655361, 5, 0, 1, 5, 1, 1048576, 6, 0, 0, 7, 1, 1441792, 6, 1, 1441802, 5, 2, 1048598, 6, 2, 655366)
+}
+
+[node name="Dog" type="Sprite3D" parent="."]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 13, 1, 0)
+shaded = true
+texture = ExtResource("2_nxhjh")
