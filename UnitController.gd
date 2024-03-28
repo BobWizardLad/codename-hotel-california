@@ -1,6 +1,9 @@
 extends Node3D
 
-@onready var NAVIGATION_SERVICE := get_node("NavigationService")
+@onready var NAVIGATION_SERVICE := get_node("../NavigationService")
+@onready var PLAYER := get_node("../Player")
+
+var directions: PackedVector3Array
 
 signal turn_end
 
@@ -10,9 +13,12 @@ func _ready():
 
 func on_enemy_turn():
 	for each in get_children():
-		# Determine if player can see enemy - Enemy Func
-		# Create Route, set in enemy
-		# Execute attack if player is adjacent - Enemy Func x2
+		
+		if each.is_player_visible:
+			each.current_path = NAVIGATION_SERVICE.get_directions(each.position, PLAYER.position)
+		if each.get_player_adjacent() != null:
+			each.COMBAT_COMPONENT.attack(each.get_player_adjacent().COMBAT_COMPONENT)
+		else:
+			each.move_step()
 		# if player not adjacent, call move step 
-		each.move_step()
 	emit_signal("turn_end")

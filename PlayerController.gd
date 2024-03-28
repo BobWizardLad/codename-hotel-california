@@ -28,6 +28,7 @@ func _unhandled_input(event):
 	player_move(event)
 	if event.is_action_pressed("Attack") and CAST_FORWARD.is_colliding() and CAST_FORWARD.get_collider().get_parent().name == "Enemy":
 		COMBAT_COMPONENT.attack(CAST_FORWARD.get_collider().get_parent().find_child("CombatComponent"))
+		emit_signal("turn_end")
 
 func player_move(event):
 	if motion_tween is Tween: # Halt another tween if one is running

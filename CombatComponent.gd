@@ -45,4 +45,5 @@ func focus_attack(target: Node) -> bool:
 func take_damage(damage: int) -> int:
 	health -= damage
 	health = clamp(health, 0, HEALTH_MAX)
+	print(health)
 	return health

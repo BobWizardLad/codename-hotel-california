@@ -8,6 +8,7 @@ extends Node3D
 func _ready():
 	level = find_child("Level01")
 	
+	# Handling Navservice here
 	NAVIGATION_SERVICE.set_current_level(level)
 	NAVIGATION_SERVICE.build_pathfinding()
 	NAVIGATION_SERVICE.build_navigation()
