@@ -36,7 +36,7 @@ func build_navigation():
 	# Points must have z and x values within + or - 2=[GRID SCALE] from each other
 	for n in range(0, valid_locations.size() - 1):
 		for m in range(n+1, valid_locations.size()):
-			if (valid_locations[n].z+2 == valid_locations[m].z or valid_locations[n].z-2 == valid_locations[m].z or valid_locations[n].z == valid_locations[m].z) and (valid_locations[n].x+2 == valid_locations[m].x or valid_locations[n].x-2 == valid_locations[m].x or valid_locations[n].x == valid_locations[m].x):
+			if ((valid_locations[n].x + 2 == valid_locations[m].x or valid_locations[n].x - 2 == valid_locations[m].x) and valid_locations[n].z == valid_locations[m].z) or ((valid_locations[n].z + 2 == valid_locations[m].z or valid_locations[n].z - 2 == valid_locations[m].z) and valid_locations[n].x == valid_locations[m].x):
 				if not astar_service.are_points_connected(n, m):
 					astar_service.connect_points(n, m)
 

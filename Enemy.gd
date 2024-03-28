@@ -37,31 +37,44 @@ func set_target(target_val: Vector3i):
 # in the +z direction because that is the biggest distance it has to travel.
 # if the favored direction is blocked, it will pick the next unblocked direction
 # (+x, +z, -x, -z priority order)
-func move_step():
+func move_step() -> bool:
 	if motion_tween is Tween: # Halt another tween if one is running
 		if motion_tween.is_running():
-			return
-	if current_path.size() > 0:
+			return false
+	if current_path.size() > 2:
+		current_path.remove_at(0) # First location is always my lcoation
 		target = current_path[0] # Set next step in path as target
+	else:
+		return false
 	
 	if abs(target.x - global_transform.origin.x) > abs(target.z - global_transform.origin.z):
 		if target.x > global_transform.origin.x and not CAST_SOUTH.is_colliding():
 			motion_tween = create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN_OUT)
 			motion_tween.tween_property(self, "transform", transform.translated(Vector3(GRID_SCALE, 0, 0)), TWEEN_FACTOR)
 			current_path.remove_at(0) # Clean up the path step we just moved to
+			return true
 		elif target.x < global_transform.origin.x and not CAST_NORTH.is_colliding():
 			motion_tween = create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN_OUT)
 			motion_tween.tween_property(self, "transform", transform.translated(Vector3(-GRID_SCALE, 0, 0)), TWEEN_FACTOR)
 			current_path.remove_at(0) # Clean up the path step we just moved to
+			return true
+		else: 
+			return false
 	elif abs(target.x - global_transform.origin.x) <= abs(target.z - global_transform.origin.z):
 		if target.z > global_transform.origin.z and not CAST_WEST.is_colliding():
 			motion_tween = create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN_OUT)
 			motion_tween.tween_property(self, "transform", transform.translated(Vector3(0, 0, GRID_SCALE)), TWEEN_FACTOR)
 			current_path.remove_at(0) # Clean up the path step we just moved to
+			return true
 		elif target.z < global_transform.origin.z and not CAST_EAST.is_colliding():
 			motion_tween = create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN_OUT)
 			motion_tween.tween_property(self, "transform", transform.translated(Vector3(0, 0, -GRID_SCALE)), TWEEN_FACTOR)
 			current_path.remove_at(0) # Clean up the path step we just moved to
+			return true
+		else:
+			return false
+	else:
+		return false
 
 # This function will check each collider and see if the player is adjacent
 # i.e. if the parent of any collider is in group "Player"
