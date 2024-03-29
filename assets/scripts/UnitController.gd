@@ -11,11 +11,9 @@ signal turn_end
 func _ready():
 	pass # Replace with function body.
 
-
 func _on_enemy_turn():
 	for each in get_children():
-		
-		if each.is_player_visible:
+		if NAVIGATION_SERVICE.get_directions(each.position, PLAYER.position).size() <= 8:
 			each.current_path = NAVIGATION_SERVICE.get_directions(each.position, PLAYER.position)
 		if each.get_player_adjacent() != null:
 			each.COMBAT_COMPONENT.attack(each.get_player_adjacent().COMBAT_COMPONENT)
