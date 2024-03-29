@@ -21,7 +21,6 @@ func attack(target: Node) -> bool:
 		target.take_damage(POWER)
 		return true
 	else:
-		print("Not a Combat Component!")
 		return false
 
 # Called with the target of the attack (must be a CombatComponent)
@@ -34,10 +33,8 @@ func focus_attack(target: Node) -> bool:
 			target.take_damage(FOCUS_POWER)
 			return true
 		else:
-			print("Out of Focus!")
 			return false
 	else:
-		print("Not a Combat Component!")
 		return false
 
 # Is called with incoming damage as a parameter, and 
@@ -45,5 +42,4 @@ func focus_attack(target: Node) -> bool:
 func take_damage(damage: int) -> int:
 	health -= damage
 	health = clamp(health, 0, HEALTH_MAX)
-	print(health)
 	return health

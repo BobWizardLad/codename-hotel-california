@@ -15,8 +15,6 @@ func _process(_delta):
 	pass
 
 func get_directions(from: Vector3i, to: Vector3i) -> PackedVector3Array:
-	print(astar_service.get_closest_point(from))
-	print(astar_service.get_closest_point(to))
 	return astar_service.get_point_path(astar_service.get_closest_point(from), astar_service.get_closest_point(to))
 
 # Gets called to set the level being pathed around
@@ -44,7 +42,6 @@ func build_navigation():
 # set by the set_current_level. This 
 func build_pathfinding():
 	valid_locations = current_level.get_used_cells()
-	print(valid_locations)
 	# Keep the location of pitfalls excluded from pathfinding unless 
 	# the enemy floats
 	pitfalls = current_level.get_used_cells_by_item(3)
@@ -58,5 +55,3 @@ func build_pathfinding():
 		#	valid_locations.remove_at(valid_locations.find(each))
 		#	continue
 		valid_locations[valid_locations.find(each)] = Vector3i(each.x*2, 1, each.z*2) # 2=[GRID_SCALE]
-	
-	print(valid_locations)

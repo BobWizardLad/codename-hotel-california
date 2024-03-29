@@ -9,5 +9,4 @@ func get_enemy_raycast() -> Object:
 	if cast_group.is_colliding():
 		return cast_group.collider
 	else:
-		print("got nothing!")
 		return null

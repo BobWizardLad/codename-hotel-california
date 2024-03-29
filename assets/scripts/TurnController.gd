@@ -16,10 +16,8 @@ func _process(delta):
 
 func _player_turn_end():
 	player_turn = false
-	print("Player Turn Ended!")
 	emit_signal("take_enemy_turn")
 
 func _enemy_turn_end():
 	player_turn = true
-	print("Enemy Turn Ended!")
 	emit_signal("take_player_turn")
