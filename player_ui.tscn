@@ -1,0 +1,392 @@
+[gd_scene load_steps=24 format=3 uid="uid://djs4ng2baukv4"]
+
+[ext_resource type="Script" path="res://player_ui.gd" id="1_xygem"]
+[ext_resource type="Texture2D" uid="uid://d3a7wwiqkur6j" path="res://UI_spritesheet.png" id="2_tujh6"]
+[ext_resource type="Texture2D" uid="uid://db8qeyftso2kb" path="res://UIconcept.png" id="3_037ei"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6hjtf"]
+atlas = ExtResource("2_tujh6")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tunua"]
+atlas = ExtResource("2_tujh6")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_udv43"]
+atlas = ExtResource("2_tujh6")
+region = Rect2(48, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rmf3u"]
+atlas = ExtResource("2_tujh6")
+region = Rect2(48, 16, 32, 6)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xayrr"]
+atlas = ExtResource("2_tujh6")
+region = Rect2(48, 0, 32, 6)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_adl8e"]
+atlas = ExtResource("2_tujh6")
+region = Rect2(48, 32, 32, 6)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ls8d"]
+atlas = ExtResource("2_tujh6")
+region = Rect2(0, 32, 16, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3wi20"]
+atlas = ExtResource("2_tujh6")
+region = Rect2(0, 48, 16, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vkynw"]
+atlas = ExtResource("2_tujh6")
+region = Rect2(80, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8yp8v"]
+atlas = ExtResource("2_tujh6")
+region = Rect2(144, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8hprf"]
+atlas = ExtResource("2_tujh6")
+region = Rect2(0, 64, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m0drt"]
+atlas = ExtResource("2_tujh6")
+region = Rect2(48, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n0b2q"]
+atlas = ExtResource("2_tujh6")
+region = Rect2(80, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a48q1"]
+atlas = ExtResource("2_tujh6")
+region = Rect2(144, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rhcoo"]
+atlas = ExtResource("2_tujh6")
+region = Rect2(112, 14, 182, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gvk6k"]
+atlas = ExtResource("2_tujh6")
+region = Rect2(48, 64, 59, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_17quu"]
+atlas = ExtResource("2_tujh6")
+region = Rect2(48, 48, 59, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m8ra5"]
+atlas = ExtResource("2_tujh6")
+region = Rect2(48, 80, 59, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x8mjx"]
+atlas = ExtResource("2_tujh6")
+region = Rect2(112, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xea4s"]
+atlas = ExtResource("2_tujh6")
+region = Rect2(0, 112, 16, 16)
+
+[node name="PlayerUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xygem")
+
+[node name="PartyLeft" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 144.0
+grow_vertical = 2
+theme_override_constants/separation = -1
+
+[node name="MenuBar" type="HBoxContainer" parent="PartyLeft"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Options" type="TextureButton" parent="PartyLeft/MenuBar"]
+custom_minimum_size = Vector2(72, 72)
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = SubResource("AtlasTexture_6hjtf")
+stretch_mode = 0
+
+[node name="Help" type="TextureButton" parent="PartyLeft/MenuBar"]
+custom_minimum_size = Vector2(72, 72)
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = SubResource("AtlasTexture_tunua")
+stretch_mode = 0
+
+[node name="Fighter" type="TextureRect" parent="PartyLeft"]
+custom_minimum_size = Vector2(144, 144)
+layout_mode = 2
+size_flags_vertical = 3
+texture = SubResource("AtlasTexture_udv43")
+
+[node name="FighterFocus" type="TextureProgressBar" parent="PartyLeft"]
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 2
+size_flags_vertical = 3
+value = 23.0
+nine_patch_stretch = true
+texture_under = SubResource("AtlasTexture_rmf3u")
+texture_over = SubResource("AtlasTexture_xayrr")
+texture_progress = SubResource("AtlasTexture_adl8e")
+
+[node name="FighterControl" type="HBoxContainer" parent="PartyLeft"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Attack" type="TextureButton" parent="PartyLeft/FighterControl"]
+custom_minimum_size = Vector2(72, 45)
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = SubResource("AtlasTexture_8ls8d")
+stretch_mode = 0
+
+[node name="FocusAttack" type="TextureButton" parent="PartyLeft/FighterControl"]
+custom_minimum_size = Vector2(72, 45)
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = SubResource("AtlasTexture_3wi20")
+stretch_mode = 0
+
+[node name="Rouge" type="TextureRect" parent="PartyLeft"]
+custom_minimum_size = Vector2(144, 144)
+layout_mode = 2
+size_flags_vertical = 3
+texture = SubResource("AtlasTexture_vkynw")
+
+[node name="RougeFocus2" type="TextureProgressBar" parent="PartyLeft"]
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 2
+size_flags_vertical = 3
+value = 43.0
+nine_patch_stretch = true
+texture_under = SubResource("AtlasTexture_rmf3u")
+texture_over = SubResource("AtlasTexture_xayrr")
+texture_progress = SubResource("AtlasTexture_adl8e")
+
+[node name="RougeControl2" type="HBoxContainer" parent="PartyLeft"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Attack" type="TextureButton" parent="PartyLeft/RougeControl2"]
+custom_minimum_size = Vector2(72, 45)
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = SubResource("AtlasTexture_8ls8d")
+stretch_mode = 0
+
+[node name="FocusAttack" type="TextureButton" parent="PartyLeft/RougeControl2"]
+custom_minimum_size = Vector2(72, 45)
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = SubResource("AtlasTexture_3wi20")
+stretch_mode = 0
+
+[node name="AttackAll" type="TextureButton" parent="PartyLeft"]
+custom_minimum_size = Vector2(144, 149)
+layout_mode = 2
+size_flags_vertical = 3
+texture_normal = SubResource("AtlasTexture_8yp8v")
+stretch_mode = 0
+
+[node name="PartyRight" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -144.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/separation = -1
+
+[node name="Inventory" type="TextureButton" parent="PartyRight"]
+custom_minimum_size = Vector2(144, 72)
+layout_mode = 2
+size_flags_vertical = 3
+texture_normal = SubResource("AtlasTexture_8hprf")
+stretch_mode = 0
+
+[node name="Paladin" type="TextureRect" parent="PartyRight"]
+custom_minimum_size = Vector2(144, 144)
+layout_mode = 2
+size_flags_vertical = 3
+texture = SubResource("AtlasTexture_m0drt")
+
+[node name="PaladinFocus" type="TextureProgressBar" parent="PartyRight"]
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 2
+size_flags_vertical = 3
+value = 100.0
+nine_patch_stretch = true
+texture_under = SubResource("AtlasTexture_rmf3u")
+texture_over = SubResource("AtlasTexture_xayrr")
+texture_progress = SubResource("AtlasTexture_adl8e")
+
+[node name="PaladinControl" type="HBoxContainer" parent="PartyRight"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Attack" type="TextureButton" parent="PartyRight/PaladinControl"]
+custom_minimum_size = Vector2(72, 45)
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = SubResource("AtlasTexture_8ls8d")
+stretch_mode = 0
+
+[node name="FocusAttack" type="TextureButton" parent="PartyRight/PaladinControl"]
+custom_minimum_size = Vector2(72, 45)
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = SubResource("AtlasTexture_3wi20")
+stretch_mode = 0
+
+[node name="Mage" type="TextureRect" parent="PartyRight"]
+custom_minimum_size = Vector2(144, 144)
+layout_mode = 2
+size_flags_vertical = 3
+texture = SubResource("AtlasTexture_n0b2q")
+
+[node name="MageFocus" type="TextureProgressBar" parent="PartyRight"]
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 2
+size_flags_vertical = 3
+value = 35.0
+nine_patch_stretch = true
+texture_under = SubResource("AtlasTexture_rmf3u")
+texture_over = SubResource("AtlasTexture_xayrr")
+texture_progress = SubResource("AtlasTexture_adl8e")
+
+[node name="MageControl" type="HBoxContainer" parent="PartyRight"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Attack" type="TextureButton" parent="PartyRight/MageControl"]
+custom_minimum_size = Vector2(72, 45)
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = SubResource("AtlasTexture_8ls8d")
+stretch_mode = 0
+
+[node name="FocusAttack" type="TextureButton" parent="PartyRight/MageControl"]
+custom_minimum_size = Vector2(72, 45)
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = SubResource("AtlasTexture_3wi20")
+stretch_mode = 0
+
+[node name="Deco" type="TextureButton" parent="PartyRight"]
+custom_minimum_size = Vector2(144, 149)
+layout_mode = 2
+size_flags_vertical = 3
+texture_normal = SubResource("AtlasTexture_a48q1")
+stretch_mode = 0
+
+[node name="BottomPanel" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(830, 154)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = SubResource("AtlasTexture_rhcoo")
+stretch_mode = 5
+
+[node name="Health" type="TextureProgressBar" parent="BottomPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.975
+anchor_top = 0.558
+anchor_right = 0.975
+anchor_bottom = 0.558
+offset_left = -268.25
+offset_top = 0.0679932
+offset_right = -2.25
+offset_bottom = 64.068
+grow_horizontal = 0
+value = 74.0
+nine_patch_stretch = true
+texture_under = SubResource("AtlasTexture_gvk6k")
+texture_over = SubResource("AtlasTexture_17quu")
+texture_progress = SubResource("AtlasTexture_m8ra5")
+
+[node name="Portrait" type="TextureRect" parent="BottomPanel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -72.0
+offset_top = 10.0
+offset_right = 72.0
+offset_bottom = 154.0
+grow_horizontal = 2
+texture = SubResource("AtlasTexture_x8mjx")
+
+[node name="Artifact01" type="TextureRect" parent="BottomPanel"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 24.0
+offset_top = -67.0
+offset_right = 86.0
+offset_bottom = -4.0
+grow_vertical = 0
+texture = SubResource("AtlasTexture_xea4s")
+
+[node name="Artifact02" type="TextureRect" parent="BottomPanel"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 86.0
+offset_top = -67.0
+offset_right = 148.0
+offset_bottom = -4.0
+grow_vertical = 0
+texture = SubResource("AtlasTexture_xea4s")
+
+[node name="Artifact03" type="TextureRect" parent="BottomPanel"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 148.0
+offset_top = -68.0
+offset_right = 210.0
+offset_bottom = -5.0
+grow_vertical = 0
+texture = SubResource("AtlasTexture_xea4s")
+
+[node name="Artifact04" type="TextureRect" parent="BottomPanel"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 210.0
+offset_top = -67.0
+offset_right = 272.0
+offset_bottom = -4.0
+grow_vertical = 0
+texture = SubResource("AtlasTexture_xea4s")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_037ei")
