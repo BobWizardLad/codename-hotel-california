@@ -13,6 +13,7 @@
 script = ExtResource("1_6i7ao")
 
 [node name="TextureRect" type="TextureRect" parent="."]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -21,7 +22,6 @@ grow_vertical = 2
 texture = ExtResource("2_j80kt")
 
 [node name="PlayerUI" parent="." instance=ExtResource("8_mdnoh")]
-visible = false
 
 [node name="Player" parent="." instance=ExtResource("1_1f0os")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 1, 0)
