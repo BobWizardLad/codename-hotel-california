@@ -38,13 +38,21 @@ script = ExtResource("8_r6v64")
 
 [node name="Level02" parent="." instance=ExtResource("8_5muem")]
 
+[node name="Portal" parent="Level02" index="1" groups=["Portals"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 1, 8)
+destination = Vector3i(10, 1, 4)
+
 [node name="PlayerUI" parent="." instance=ExtResource("10_r81w4")]
 
 [node name="TextOverlay" parent="." instance=ExtResource("5_4vo3a")]
 visible = false
 
 [connection signal="child_order_changed" from="." to="NavigationService" method="_on_game_child_order_changed"]
+[connection signal="popup_close" from="Player" to="PlayerUI" method="_on_player_popup_close"]
+[connection signal="popup_interact" from="Player" to="PlayerUI" method="_on_player_popup_interact"]
 [connection signal="turn_end" from="Player" to="TurnController" method="_player_turn_end"]
 [connection signal="turn_end" from="UnitController" to="TurnController" method="_enemy_turn_end"]
 [connection signal="take_enemy_turn" from="TurnController" to="UnitController" method="_on_enemy_turn"]
 [connection signal="take_player_turn" from="TurnController" to="Player" method="_on_player_turn"]
+
+[editable path="Level02"]

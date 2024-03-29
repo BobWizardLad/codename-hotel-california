@@ -14,20 +14,29 @@ extends Node3D
 
 # Signals
 signal turn_end
+signal popup_interact
+signal popup_close
 
 var is_on_turn: bool
 var has_attacked: bool = false
 var has_moved: bool = false
+var looking_at_popup: bool = false
 
 # Tweens
 var motion_tween
 
 func _ready():
-	pass
+	add_to_group("Player")
 
 func _process(_delta):
 	if has_moved or has_attacked:
 		on_turn_end()
+	if CAST_FORWARD.is_colliding() and CAST_FORWARD.get_collider().is_in_group("Portals"):
+		emit_signal("popup_interact", "Attack to continue forward...")
+		looking_at_popup = true
+	elif looking_at_popup == true:
+		emit_signal("popup_close")
+		looking_at_popup = false
 
 func _input(event):
 	if is_on_turn:
@@ -35,7 +44,9 @@ func _input(event):
 		if event.is_action_pressed("Attack") and CAST_FORWARD.is_colliding() and CAST_FORWARD.get_collider().get_parent().get_parent().name == "UnitController":
 			COMBAT_COMPONENT.attack(CAST_FORWARD.get_collider().get_parent().find_child("CombatComponent"))
 			has_attacked = true
-
+		elif event.is_action_pressed("Attack") and CAST_FORWARD.is_colliding() and CAST_FORWARD.get_collider().is_in_group("Portals"):
+			emit_signal("popup_close")
+			CAST_FORWARD.get_collider().warp(self)
 func player_move(event):
 	if motion_tween is Tween: # Halt another tween if one is running
 		if motion_tween.is_running():

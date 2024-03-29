@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://djs4ng2baukv4"]
+[gd_scene load_steps=35 format=3 uid="uid://djs4ng2baukv4"]
 
 [ext_resource type="Script" path="res://assets/scripts/player_ui.gd" id="1_xygem"]
 [ext_resource type="Texture2D" uid="uid://d3a7wwiqkur6j" path="res://assets/sprites/UI_spritesheet.png" id="2_tujh6"]
@@ -8,9 +8,25 @@
 atlas = ExtResource("2_tujh6")
 region = Rect2(0, 16, 16, 16)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_6g8mv"]
+atlas = ExtResource("2_tujh6")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8w8jv"]
+atlas = ExtResource("2_tujh6")
+region = Rect2(16, 16, 16, 16)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_tunua"]
 atlas = ExtResource("2_tujh6")
 region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v5b8b"]
+atlas = ExtResource("2_tujh6")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7d15x"]
+atlas = ExtResource("2_tujh6")
+region = Rect2(16, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_udv43"]
 atlas = ExtResource("2_tujh6")
@@ -32,13 +48,33 @@ region = Rect2(48, 32, 32, 6)
 atlas = ExtResource("2_tujh6")
 region = Rect2(0, 32, 16, 10)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_mfn5u"]
+atlas = ExtResource("2_tujh6")
+region = Rect2(32, 32, 16, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4yv6o"]
+atlas = ExtResource("2_tujh6")
+region = Rect2(16, 32, 16, 10)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_3wi20"]
 atlas = ExtResource("2_tujh6")
 region = Rect2(0, 48, 16, 10)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_rhyvd"]
+atlas = ExtResource("2_tujh6")
+region = Rect2(32, 48, 16, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3soiw"]
+atlas = ExtResource("2_tujh6")
+region = Rect2(16, 48, 16, 10)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_vkynw"]
 atlas = ExtResource("2_tujh6")
 region = Rect2(80, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ymck"]
+atlas = ExtResource("2_tujh6")
+region = Rect2(32, 32, 16, 10)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8yp8v"]
 atlas = ExtResource("2_tujh6")
@@ -47,6 +83,14 @@ region = Rect2(144, 96, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_8hprf"]
 atlas = ExtResource("2_tujh6")
 region = Rect2(0, 64, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vq0o7"]
+atlas = ExtResource("2_tujh6")
+region = Rect2(0, 96, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fp0li"]
+atlas = ExtResource("2_tujh6")
+region = Rect2(0, 80, 32, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m0drt"]
 atlas = ExtResource("2_tujh6")
@@ -110,6 +154,8 @@ custom_minimum_size = Vector2(72, 72)
 layout_mode = 2
 size_flags_horizontal = 3
 texture_normal = SubResource("AtlasTexture_6hjtf")
+texture_pressed = SubResource("AtlasTexture_6g8mv")
+texture_hover = SubResource("AtlasTexture_8w8jv")
 stretch_mode = 0
 
 [node name="Help" type="TextureButton" parent="PartyLeft/MenuBar"]
@@ -117,6 +163,8 @@ custom_minimum_size = Vector2(72, 72)
 layout_mode = 2
 size_flags_horizontal = 3
 texture_normal = SubResource("AtlasTexture_tunua")
+texture_pressed = SubResource("AtlasTexture_v5b8b")
+texture_hover = SubResource("AtlasTexture_7d15x")
 stretch_mode = 0
 
 [node name="Fighter" type="TextureRect" parent="PartyLeft"]
@@ -144,6 +192,8 @@ custom_minimum_size = Vector2(72, 45)
 layout_mode = 2
 size_flags_horizontal = 3
 texture_normal = SubResource("AtlasTexture_8ls8d")
+texture_pressed = SubResource("AtlasTexture_mfn5u")
+texture_hover = SubResource("AtlasTexture_4yv6o")
 stretch_mode = 0
 
 [node name="FocusAttack" type="TextureButton" parent="PartyLeft/FighterControl"]
@@ -151,6 +201,8 @@ custom_minimum_size = Vector2(72, 45)
 layout_mode = 2
 size_flags_horizontal = 3
 texture_normal = SubResource("AtlasTexture_3wi20")
+texture_pressed = SubResource("AtlasTexture_rhyvd")
+texture_hover = SubResource("AtlasTexture_3soiw")
 stretch_mode = 0
 
 [node name="Rouge" type="TextureRect" parent="PartyLeft"]
@@ -178,6 +230,8 @@ custom_minimum_size = Vector2(72, 45)
 layout_mode = 2
 size_flags_horizontal = 3
 texture_normal = SubResource("AtlasTexture_8ls8d")
+texture_pressed = SubResource("AtlasTexture_8ymck")
+texture_hover = SubResource("AtlasTexture_4yv6o")
 stretch_mode = 0
 
 [node name="FocusAttack" type="TextureButton" parent="PartyLeft/RougeControl2"]
@@ -185,6 +239,8 @@ custom_minimum_size = Vector2(72, 45)
 layout_mode = 2
 size_flags_horizontal = 3
 texture_normal = SubResource("AtlasTexture_3wi20")
+texture_pressed = SubResource("AtlasTexture_rhyvd")
+texture_hover = SubResource("AtlasTexture_3soiw")
 stretch_mode = 0
 
 [node name="AttackAll" type="TextureButton" parent="PartyLeft"]
@@ -210,6 +266,8 @@ custom_minimum_size = Vector2(144, 72)
 layout_mode = 2
 size_flags_vertical = 3
 texture_normal = SubResource("AtlasTexture_8hprf")
+texture_pressed = SubResource("AtlasTexture_vq0o7")
+texture_hover = SubResource("AtlasTexture_fp0li")
 stretch_mode = 0
 
 [node name="Paladin" type="TextureRect" parent="PartyRight"]
@@ -237,6 +295,8 @@ custom_minimum_size = Vector2(72, 45)
 layout_mode = 2
 size_flags_horizontal = 3
 texture_normal = SubResource("AtlasTexture_8ls8d")
+texture_pressed = SubResource("AtlasTexture_8ymck")
+texture_hover = SubResource("AtlasTexture_4yv6o")
 stretch_mode = 0
 
 [node name="FocusAttack" type="TextureButton" parent="PartyRight/PaladinControl"]
@@ -244,6 +304,8 @@ custom_minimum_size = Vector2(72, 45)
 layout_mode = 2
 size_flags_horizontal = 3
 texture_normal = SubResource("AtlasTexture_3wi20")
+texture_pressed = SubResource("AtlasTexture_rhyvd")
+texture_hover = SubResource("AtlasTexture_3soiw")
 stretch_mode = 0
 
 [node name="Mage" type="TextureRect" parent="PartyRight"]
@@ -271,6 +333,8 @@ custom_minimum_size = Vector2(72, 45)
 layout_mode = 2
 size_flags_horizontal = 3
 texture_normal = SubResource("AtlasTexture_8ls8d")
+texture_pressed = SubResource("AtlasTexture_8ymck")
+texture_hover = SubResource("AtlasTexture_4yv6o")
 stretch_mode = 0
 
 [node name="FocusAttack" type="TextureButton" parent="PartyRight/MageControl"]
@@ -278,6 +342,8 @@ custom_minimum_size = Vector2(72, 45)
 layout_mode = 2
 size_flags_horizontal = 3
 texture_normal = SubResource("AtlasTexture_3wi20")
+texture_pressed = SubResource("AtlasTexture_rhyvd")
+texture_hover = SubResource("AtlasTexture_3soiw")
 stretch_mode = 0
 
 [node name="Deco" type="TextureButton" parent="PartyRight"]
@@ -390,3 +456,19 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_037ei")
+
+[node name="PopupDialog" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.434462
+anchor_top = 0.709877
+anchor_right = 0.565538
+anchor_bottom = 0.709877
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
