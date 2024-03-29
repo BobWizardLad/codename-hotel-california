@@ -32,7 +32,7 @@ func _process(_delta):
 func _unhandled_input(event):
 	if is_on_turn:
 		player_move(event)
-		if event.is_action_pressed("Attack") and CAST_FORWARD.is_colliding() and CAST_FORWARD.get_collider().get_parent().name == "Enemy":
+		if event.is_action_pressed("Attack") and CAST_FORWARD.is_colliding() and CAST_FORWARD.get_collider().get_parent().get_parent().name == "UnitController":
 			COMBAT_COMPONENT.attack(CAST_FORWARD.get_collider().get_parent().find_child("CombatComponent"))
 			has_attacked = true
 
