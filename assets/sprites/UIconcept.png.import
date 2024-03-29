@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bylm75dkhp6cp"
-path="res://.godot/imported/focus_bar_full.png-05928154364359432a3e473323e7e7a4.ctex"
+uid="uid://db8qeyftso2kb"
+path="res://.godot/imported/UIconcept.png-7f8b85f3454dd3184eda58f9685a7c9f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://focus_bar_full.png"
-dest_files=["res://.godot/imported/focus_bar_full.png-05928154364359432a3e473323e7e7a4.ctex"]
+source_file="res://assets/sprites/UIconcept.png"
+dest_files=["res://.godot/imported/UIconcept.png-7f8b85f3454dd3184eda58f9685a7c9f.ctex"]
 
 [params]
 

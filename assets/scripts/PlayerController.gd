@@ -29,7 +29,7 @@ func _process(_delta):
 	if has_moved or has_attacked:
 		on_turn_end()
 
-func _unhandled_input(event):
+func _input(event):
 	if is_on_turn:
 		player_move(event)
 		if event.is_action_pressed("Attack") and CAST_FORWARD.is_colliding() and CAST_FORWARD.get_collider().get_parent().get_parent().name == "UnitController":

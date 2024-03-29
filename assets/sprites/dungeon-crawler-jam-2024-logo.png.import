@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://db8qeyftso2kb"
-path="res://.godot/imported/UIconcept.png-94572e7b44dc59b9a2157eaf95b951f2.ctex"
+uid="uid://dfanpdmk8difb"
+path="res://.godot/imported/dungeon-crawler-jam-2024-logo.png-e41571b5b0d319e2f638fb269b817ee7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://UIconcept.png"
-dest_files=["res://.godot/imported/UIconcept.png-94572e7b44dc59b9a2157eaf95b951f2.ctex"]
+source_file="res://assets/sprites/dungeon-crawler-jam-2024-logo.png"
+dest_files=["res://.godot/imported/dungeon-crawler-jam-2024-logo.png-e41571b5b0d319e2f638fb269b817ee7.ctex"]
 
 [params]
 
