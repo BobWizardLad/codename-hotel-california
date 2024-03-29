@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://UnitController.gd" id="3_nt3wb"]
 [ext_resource type="PackedScene" uid="uid://ew6uj46j2ij2" path="res://Level01.tscn" id="4_25vxw"]
 [ext_resource type="Script" path="res://TurnController.gd" id="4_58lo4"]
-[ext_resource type="PackedScene" path="res://player_ui.tscn" id="8_mdnoh"]
+[ext_resource type="PackedScene" uid="uid://djs4ng2baukv4" path="res://player_ui.tscn" id="8_mdnoh"]
 
 [node name="GameController" type="Node3D"]
 script = ExtResource("1_6i7ao")
