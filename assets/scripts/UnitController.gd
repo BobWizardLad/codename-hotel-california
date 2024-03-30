@@ -20,7 +20,6 @@ func _on_enemy_turn():
 		else: # If player not adjacent, call move step 
 			each.move_step()
 		if each.COMBAT_COMPONENT.is_poisoned:
-			print("I am Poisoned!")
 			each.COMBAT_COMPONENT.take_DOT() # Call in poison damage if poisoned
 	
 	emit_signal("turn_end")

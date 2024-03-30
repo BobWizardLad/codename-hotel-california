@@ -119,6 +119,7 @@ func paladin_focus_attack(target: Node) -> bool:
 		if paladin_focus > 0:
 			paladin_focus -= 1
 			target.take_damage(PALADIN_FOCUS_POWER)
+			target.is_weakened = true
 			return true
 		else:
 			return false

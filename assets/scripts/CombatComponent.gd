@@ -9,6 +9,7 @@ extends Node
 var health: int
 var focus: int
 var is_poisoned: bool
+var is_weakened: bool
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -42,7 +43,10 @@ func focus_attack(target: Node) -> bool:
 # Is called with incoming damage as a parameter, and 
 # returns the clamped health value.
 func take_damage(damage: int) -> int:
-	health -= damage
+	if is_weakened:
+		health -= damage + 15
+	else:
+		health -= damage
 	health = clamp(health, 0, HEALTH_MAX)
 	return health
 
