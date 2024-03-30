@@ -1,5 +1,12 @@
 extends AnimatedSprite2D
 
+#------------------------ TODO -----------------------------------
+# Set up a system to generate a sprite and play it, then delete it
+# also offset to position by a little each time
+# this would let animations overlap
+# it would look better
+#-----------------------------------------------------------------
+
 # Import attack animations
 var basic_attack_animations: Array = []
 var enemy_attack: SpriteFrames

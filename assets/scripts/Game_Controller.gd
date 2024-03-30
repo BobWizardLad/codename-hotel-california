@@ -4,7 +4,7 @@ extends Node3D
 @onready var NAVIGATION_SERVICE := $NavigationService
 @onready var TURN_CONTROLLER := $TurnController
 @onready var PLAYER := $Player
-@onready var TEXT_OVERLAY : Control = $TextOverlay
+@onready var TEXT_OVERLAY: Control = $TextOverlay
 @onready var level: GridMap
 
 @export var fighter_artifact_get: bool = true
@@ -53,16 +53,16 @@ func _on_portal_transition():
 	
 	if persona == 0:
 		PLAYER.fighter_is_active = true
-		message = "The mind of the Fighter takes hold..."
+		message = "The mind of the Beserk takes hold..."
 	elif persona == 1:
 		PLAYER.rouge_is_active = true
 		message = "The mind of the Rouge takes hold..."
 	elif persona == 2:
 		PLAYER.paladin_is_active = true
-		message = "The mind of the Paladin takes hold..."
+		message = "The mind of the Holy takes hold..."
 	elif persona == 3:
 		PLAYER.mage_is_active = true
-		message = "The mind of the Mage takes hold..."
+		message = "The mind of the Mystic takes hold..."
 	else:
 		pass
 	

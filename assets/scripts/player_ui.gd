@@ -10,6 +10,7 @@ extends Control
 @onready var FOCUS_ROUGE: TextureProgressBar = $PartyLeft/RougeFocus
 @onready var FOCUS_MAGE: TextureProgressBar = $PartyRight/MageFocus
 @onready var FOCUS_PALADIN: TextureProgressBar = $PartyRight/PaladinFocus
+@onready var HELP_OVERLAY: TextureRect = $HelpOverlay
 
 @onready var FIGHTER_STATE: TextureRect = $PartyLeft/Fighter
 @onready var ROUGE_STATE: TextureRect = $PartyLeft/Rouge
@@ -73,3 +74,9 @@ func _on_player_popup_interact(msg: String):
 func _on_player_popup_close():
 	POPUP_DIALOG.text = ""
 	POPUP_DIALOG.hide()
+
+func _on_help_pressed():
+	if HELP_OVERLAY.visible:
+		HELP_OVERLAY.hide()
+	else:
+		HELP_OVERLAY.show()
