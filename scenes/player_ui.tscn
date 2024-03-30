@@ -1,7 +1,9 @@
-[gd_scene load_steps=38 format=3 uid="uid://djs4ng2baukv4"]
+[gd_scene load_steps=40 format=3 uid="uid://djs4ng2baukv4"]
 
 [ext_resource type="Script" path="res://assets/scripts/player_ui.gd" id="1_xygem"]
 [ext_resource type="Texture2D" uid="uid://d3a7wwiqkur6j" path="res://assets/sprites/UI_spritesheet.png" id="2_tujh6"]
+[ext_resource type="SpriteFrames" uid="uid://ctfbmwlfy2but" path="res://assets/sprite_frames/slash_01.tres" id="3_l6qgg"]
+[ext_resource type="Script" path="res://scenes/Attack_Animations.gd" id="4_exc6q"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6hjtf"]
 atlas = ExtResource("2_tujh6")
@@ -481,3 +483,10 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(576, 410)
+scale = Vector2(9.26563, 9.26563)
+sprite_frames = ExtResource("3_l6qgg")
+frame_progress = 0.239889
+script = ExtResource("4_exc6q")

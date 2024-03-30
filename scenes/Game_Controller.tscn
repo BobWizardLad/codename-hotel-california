@@ -70,6 +70,11 @@ visible = false
 [connection signal="popup_interact" from="Player" to="PlayerUI" method="_on_player_popup_interact"]
 [connection signal="portal_transition" from="Player" to="." method="_on_portal_transition"]
 [connection signal="turn_end" from="Player" to="TurnController" method="_player_turn_end"]
+[connection signal="attack_animate_call" from="Player/CombatComponent" to="PlayerUI/AnimatedSprite2D" method="_on_attack_anim"]
+[connection signal="mage_animate_call" from="Player/CombatComponent" to="PlayerUI/AnimatedSprite2D" method="_on_mage_focus_anim"]
+[connection signal="paladin_animate_call" from="Player/CombatComponent" to="PlayerUI/AnimatedSprite2D" method="_on_paladin_focus_anim"]
+[connection signal="rouge_animate_call" from="Player/CombatComponent" to="PlayerUI/AnimatedSprite2D" method="_on_rouge_focus_anim"]
+[connection signal="enemy_attack_animate_call" from="UnitController" to="PlayerUI/AnimatedSprite2D" method="_on_enemy_attack_anim"]
 [connection signal="turn_end" from="UnitController" to="TurnController" method="_enemy_turn_end"]
 [connection signal="take_enemy_turn" from="TurnController" to="UnitController" method="_on_enemy_turn"]
 [connection signal="take_player_turn" from="TurnController" to="Player" method="_on_player_turn"]
@@ -84,4 +89,5 @@ visible = false
 [connection signal="pressed" from="PlayerUI/PartyRight/MageControl/FocusAttack" to="Player" method="_on_mage_focus_attack"]
 [connection signal="pressed" from="PlayerUI/PartyRight/SkipTurn" to="Player" method="_on_skip_turn_pressed"]
 
+[editable path="Player"]
 [editable path="PlayerUI"]

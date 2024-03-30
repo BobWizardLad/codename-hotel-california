@@ -14,6 +14,11 @@ extends Node
 @export var MAGE_FOCUS_MAX: int = 4
 @export var PALADIN_FOCUS_MAX: int = 4
 
+signal attack_animate_call
+signal rouge_animate_call
+signal mage_animate_call
+signal paladin_animate_call
+
 var health
 var fighter_focus
 var rouge_focus
@@ -33,6 +38,7 @@ func _ready():
 # or not (invalid target).
 func fighter_attack(target: Node) -> bool:
 	if target.name == "CombatComponent" or target.name == "PlayerCombatComponent":
+		emit_signal("attack_animate_call")
 		target.take_damage(FIGHTER_POWER)
 		return true
 	else:
@@ -43,6 +49,7 @@ func fighter_attack(target: Node) -> bool:
 # or not (invalid target).
 func rouge_attack(target: Node) -> bool:
 	if target.name == "CombatComponent" or target.name == "PlayerCombatComponent":
+		emit_signal("attack_animate_call")
 		target.take_damage(ROUGE_POWER)
 		return true
 	else:
@@ -53,6 +60,7 @@ func rouge_attack(target: Node) -> bool:
 # or not (invalid target).
 func mage_attack(target: Node) -> bool:
 	if target.name == "CombatComponent" or target.name == "PlayerCombatComponent":
+		emit_signal("attack_animate_call")
 		target.take_damage(MAGE_POWER)
 		return true
 	else:
@@ -63,6 +71,7 @@ func mage_attack(target: Node) -> bool:
 # or not (invalid target).
 func paladin_attack(target: Node) -> bool:
 	if target.name == "CombatComponent" or target.name == "PlayerCombatComponent":
+		emit_signal("attack_animate_call")
 		target.take_damage(PALADIN_POWER)
 		return true
 	else:
@@ -75,6 +84,7 @@ func fighter_focus_attack(target: Node) -> bool:
 	if target.name == "CombatComponent":
 		if fighter_focus > 0:
 			fighter_focus -= 1
+			emit_signal("attack_animate_call")
 			target.take_damage(FIGHTER_POWER)
 			return true
 		else:
@@ -89,6 +99,7 @@ func rouge_focus_attack(target: Node) -> bool:
 	if target.name == "CombatComponent":
 		if rouge_focus > 0:
 			rouge_focus -= 1
+			emit_signal("rouge_animate_call")
 			target.take_damage(ROUGE_POWER)
 			target.is_poisoned = true # Rouge's special causes DOT
 			return true
@@ -104,6 +115,7 @@ func mage_focus_attack(target: Node) -> bool:
 	if target.name == "CombatComponent":
 		if mage_focus > 0:
 			mage_focus -= 1
+			emit_signal("mage_animate_call")
 			target.take_damage(MAGE_FOCUS_POWER)
 			return true
 		else:
@@ -118,6 +130,7 @@ func paladin_focus_attack(target: Node) -> bool:
 	if target.name == "CombatComponent":
 		if paladin_focus > 0:
 			paladin_focus -= 1
+			emit_signal("paladin_animate_call")
 			target.take_damage(PALADIN_FOCUS_POWER)
 			target.is_weakened = true
 			return true
