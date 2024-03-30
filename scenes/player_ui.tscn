@@ -211,7 +211,7 @@ layout_mode = 2
 size_flags_vertical = 3
 texture = SubResource("AtlasTexture_vkynw")
 
-[node name="RougeFocus2" type="TextureProgressBar" parent="PartyLeft"]
+[node name="RougeFocus" type="TextureProgressBar" parent="PartyLeft"]
 custom_minimum_size = Vector2(0, 28)
 layout_mode = 2
 size_flags_vertical = 3
@@ -221,11 +221,11 @@ texture_under = SubResource("AtlasTexture_rmf3u")
 texture_over = SubResource("AtlasTexture_xayrr")
 texture_progress = SubResource("AtlasTexture_adl8e")
 
-[node name="RougeControl2" type="HBoxContainer" parent="PartyLeft"]
+[node name="RougeControl" type="HBoxContainer" parent="PartyLeft"]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="Attack" type="TextureButton" parent="PartyLeft/RougeControl2"]
+[node name="Attack" type="TextureButton" parent="PartyLeft/RougeControl"]
 custom_minimum_size = Vector2(72, 45)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -234,7 +234,7 @@ texture_pressed = SubResource("AtlasTexture_8ymck")
 texture_hover = SubResource("AtlasTexture_4yv6o")
 stretch_mode = 0
 
-[node name="FocusAttack" type="TextureButton" parent="PartyLeft/RougeControl2"]
+[node name="FocusAttack" type="TextureButton" parent="PartyLeft/RougeControl"]
 custom_minimum_size = Vector2(72, 45)
 layout_mode = 2
 size_flags_horizontal = 3

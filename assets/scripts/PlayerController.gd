@@ -17,8 +17,16 @@ signal turn_end
 signal popup_interact
 signal popup_close
 
+var fighter_is_active: bool = false
+var mage_is_active: bool = false
+var rouge_is_active: bool = false
+var paladin_is_active: bool = false
+var fighter_has_attacked: bool = false
+var rouge_has_attacked: bool = false
+var mage_has_attacked: bool = false
+var paladin_has_attacked: bool = false
+
 var is_on_turn: bool
-var has_attacked: bool = false
 var has_moved: bool = false
 var looking_at_popup: bool = false
 
@@ -29,10 +37,10 @@ func _ready():
 	add_to_group("Player")
 
 func _process(_delta):
-	if has_moved or has_attacked:
+	if has_moved or (mage_has_attacked and fighter_has_attacked and rouge_has_attacked and paladin_has_attacked):
 		on_turn_end()
 	if CAST_FORWARD.is_colliding() and CAST_FORWARD.get_collider().is_in_group("Portals"):
-		emit_signal("popup_interact", "Attack to continue forward...")
+		emit_signal("popup_interact", "Interact [F] to continue forward...")
 		looking_at_popup = true
 	elif looking_at_popup == true:
 		emit_signal("popup_close")
@@ -41,12 +49,50 @@ func _process(_delta):
 func _input(event):
 	if is_on_turn:
 		player_move(event)
-		if event.is_action_pressed("Attack") and CAST_FORWARD.is_colliding() and CAST_FORWARD.get_collider().get_parent().get_parent().name == "UnitController":
-			COMBAT_COMPONENT.attack(CAST_FORWARD.get_collider().get_parent().find_child("CombatComponent"))
-			has_attacked = true
-		elif event.is_action_pressed("Attack") and CAST_FORWARD.is_colliding() and CAST_FORWARD.get_collider().is_in_group("Portals"):
+		if event.is_action_pressed("Interact") and CAST_FORWARD.is_colliding() and CAST_FORWARD.get_collider().is_in_group("Portals"):
 			emit_signal("popup_close")
 			CAST_FORWARD.get_collider().warp(self)
+
+func _on_fighter_attack():
+	if fighter_has_attacked == false and CAST_FORWARD.is_colliding() and CAST_FORWARD.get_collider().get_parent().get_parent().name == "UnitController":
+		COMBAT_COMPONENT.fighter_attack(CAST_FORWARD.get_collider().get_parent().find_child("CombatComponent"))
+		fighter_has_attacked = true
+
+func _on_rouge_attack():
+	if rouge_has_attacked == false and CAST_FORWARD.is_colliding() and CAST_FORWARD.get_collider().get_parent().get_parent().name == "UnitController":
+		COMBAT_COMPONENT.rouge_attack(CAST_FORWARD.get_collider().get_parent().find_child("CombatComponent"))
+		rouge_has_attacked = true
+
+func _on_mage_attack():
+	if mage_has_attacked == false and CAST_FORWARD.is_colliding() and CAST_FORWARD.get_collider().get_parent().get_parent().name == "UnitController":
+		COMBAT_COMPONENT.mage_attack(CAST_FORWARD.get_collider().get_parent().find_child("CombatComponent"))
+		mage_has_attacked = true
+
+func _on_paladin_attack():
+	if paladin_has_attacked == false and CAST_FORWARD.is_colliding() and CAST_FORWARD.get_collider().get_parent().get_parent().name == "UnitController":
+		COMBAT_COMPONENT.paladin_attack(CAST_FORWARD.get_collider().get_parent().find_child("CombatComponent"))
+		paladin_has_attacked = true
+
+func _on_fighter_focus_attack():
+	if CAST_FORWARD.is_colliding() and CAST_FORWARD.get_collider().get_parent().get_parent().name == "UnitController":
+		COMBAT_COMPONENT.fighter_focus_attack(CAST_FORWARD.get_collider().get_parent().find_child("CombatComponent"))
+		fighter_has_attacked = true
+
+func _on_rouge_focus_attack():
+	if rouge_has_attacked == false and CAST_FORWARD.is_colliding() and CAST_FORWARD.get_collider().get_parent().get_parent().name == "UnitController":
+		COMBAT_COMPONENT.rouge_focus_attack(CAST_FORWARD.get_collider().get_parent().find_child("CombatComponent"))
+		rouge_has_attacked = true
+
+func _on_mage_focus_attack():
+	if mage_has_attacked == false and CAST_FORWARD.is_colliding() and CAST_FORWARD.get_collider().get_parent().get_parent().name == "UnitController":
+		COMBAT_COMPONENT.mage_focus_attack(CAST_FORWARD.get_collider().get_parent().find_child("CombatComponent"))
+		mage_has_attacked = true
+
+func _on_paladin_focus_attack():
+	if paladin_has_attacked == false and CAST_FORWARD.is_colliding() and CAST_FORWARD.get_collider().get_parent().get_parent().name == "UnitController":
+		COMBAT_COMPONENT.paladin_focus_attack(CAST_FORWARD.get_collider().get_parent().find_child("CombatComponent"))
+		paladin_has_attacked = true
+
 func player_move(event):
 	if motion_tween is Tween: # Halt another tween if one is running
 		if motion_tween.is_running():
@@ -77,6 +123,9 @@ func _on_player_turn():
 
 func on_turn_end():
 	is_on_turn = false
-	has_attacked = false
+	fighter_has_attacked = false
+	rouge_has_attacked = false
+	mage_has_attacked = false
+	paladin_has_attacked = false
 	has_moved = false
 	emit_signal("turn_end")

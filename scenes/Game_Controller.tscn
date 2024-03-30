@@ -38,6 +38,11 @@ script = ExtResource("4_58lo4")
 [node name="NavigationService" type="Node" parent="."]
 script = ExtResource("8_r6v64")
 
+[node name="Dog" type="Sprite3D" parent="NavigationService"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 12, 1, -1)
+shaded = true
+texture = ExtResource("10_qn2km")
+
 [node name="Level02" type="GridMap" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -1)
 mesh_library = ExtResource("9_t73cg")
@@ -46,11 +51,6 @@ cell_center_y = false
 data = {
 "cells": PackedInt32Array(0, 0, 1, 1, 0, 17, 3, 0, 1441823, 2, 0, 6, 0, 2, 1048582, 0, 1, 1048595, 1, 1, 1048579, 2, 1, 1048585, 3, 1, 1441792, 2, 2, 655360, 1, 2, 655377, 3, 2, 655367, 0, 3, 1441805, 0, 4, 1441796, 0, 6, 655390, 0, 5, 1048576, 1, 5, 655375, 2, 5, 655363, 3, 5, 655363, 4, 5, 655369, 2, 4, 32, 2, 6, 1048608, 3, 6, 655366, 4, 6, 655360, 6, 6, 655378, 7, 6, 655391, 7, 4, 1441823, 3, 4, 0, 4, 4, 0, 5, 5, 3, 6, 4, 0, 8, 5, 1441817, 5, 6, 655377, 6, 5, 655363, 7, 5, 655363, 7, 0, 1441816, 7, 2, 655361, 5, 0, 1, 5, 1, 1048576, 6, 0, 0, 7, 1, 1441792, 6, 1, 1441802, 5, 2, 1048598, 6, 2, 655366, 5, 4, 39)
 }
-
-[node name="Dog" type="Sprite3D" parent="Level02"]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 13, 1, 0)
-shaded = true
-texture = ExtResource("10_qn2km")
 
 [node name="Portal" parent="Level02" groups=["Portals"] instance=ExtResource("11_axbsf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 1, 8)
@@ -72,3 +72,13 @@ visible = false
 [connection signal="turn_end" from="UnitController" to="TurnController" method="_enemy_turn_end"]
 [connection signal="take_enemy_turn" from="TurnController" to="UnitController" method="_on_enemy_turn"]
 [connection signal="take_player_turn" from="TurnController" to="Player" method="_on_player_turn"]
+[connection signal="pressed" from="PlayerUI/PartyLeft/FighterControl/Attack" to="Player" method="_on_fighter_attack"]
+[connection signal="pressed" from="PlayerUI/PartyLeft/FighterControl/FocusAttack" to="Player" method="_on_fighter_focus_attack"]
+[connection signal="pressed" from="PlayerUI/PartyLeft/RougeControl/Attack" to="Player" method="_on_rouge_attack"]
+[connection signal="pressed" from="PlayerUI/PartyLeft/RougeControl/FocusAttack" to="Player" method="_on_rouge_focus_attack"]
+[connection signal="pressed" from="PlayerUI/PartyRight/PaladinControl/Attack" to="Player" method="_on_paladin_attack"]
+[connection signal="pressed" from="PlayerUI/PartyRight/PaladinControl/FocusAttack" to="Player" method="_on_paladin_focus_attack"]
+[connection signal="pressed" from="PlayerUI/PartyRight/MageControl/Attack" to="Player" method="_on_mage_attack"]
+[connection signal="pressed" from="PlayerUI/PartyRight/MageControl/FocusAttack" to="Player" method="_on_mage_focus_attack"]
+
+[editable path="PlayerUI"]
