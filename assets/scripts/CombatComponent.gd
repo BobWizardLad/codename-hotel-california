@@ -4,9 +4,11 @@ extends Node
 @export var POWER: int = 27
 @export var FOCUS_MAX: int = 4
 @export var FOCUS_POWER: int = 65
+@export var DOT_SEVERITY: int = 15
 
-var health
-var focus
+var health: int
+var focus: int
+var is_poisoned: bool
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -41,5 +43,10 @@ func focus_attack(target: Node) -> bool:
 # returns the clamped health value.
 func take_damage(damage: int) -> int:
 	health -= damage
+	health = clamp(health, 0, HEALTH_MAX)
+	return health
+
+func take_DOT() -> int:
+	health -= DOT_SEVERITY
 	health = clamp(health, 0, HEALTH_MAX)
 	return health

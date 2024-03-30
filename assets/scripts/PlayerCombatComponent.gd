@@ -68,7 +68,6 @@ func paladin_attack(target: Node) -> bool:
 	else:
 		return false
 
-
 # Called with the target of the attack (must be a CombatComponent)
 # Attempts a focus attack and drains focus, returns if the attack was successful
 # or not (invalid target, no focus).
@@ -91,6 +90,7 @@ func rouge_focus_attack(target: Node) -> bool:
 		if rouge_focus > 0:
 			rouge_focus -= 1
 			target.take_damage(ROUGE_POWER)
+			target.is_poisoned = true # Rouge's special causes DOT
 			return true
 		else:
 			return false
