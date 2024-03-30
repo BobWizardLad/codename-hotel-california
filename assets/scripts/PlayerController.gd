@@ -4,6 +4,8 @@ extends Node3D
 # Children
 @onready var CAMERA := $PlayerCameraView
 @onready var CAST_FORWARD := $CastForward
+@onready var CAST_LEFT := $CastLeft
+@onready var CAST_RIGHT := $CastRight
 @onready var CAST_BACKWARDS := $CastBackwards
 @onready var COMBAT_COMPONENT := $CombatComponent
 
@@ -107,6 +109,16 @@ func player_move(event):
 	elif event.is_action_pressed("Move_Back") and not CAST_BACKWARDS.is_colliding():
 		motion_tween = create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN_OUT)
 		motion_tween.tween_property(self, "transform", transform.translated(CAMERA.get_global_transform().basis.z * 1 * GRID_SCALE), TWEEN_FACTOR)
+		await motion_tween.finished
+		has_moved = true
+	elif event.is_action_pressed("Move_Left") and not CAST_LEFT.is_colliding():
+		motion_tween = create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN_OUT)
+		motion_tween.tween_property(self, "transform", transform.translated(CAMERA.get_global_transform().basis.x * -1 * GRID_SCALE), TWEEN_FACTOR)
+		await motion_tween.finished
+		has_moved = true
+	elif event.is_action_pressed("Move_Right") and not CAST_RIGHT.is_colliding():
+		motion_tween = create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN_OUT)
+		motion_tween.tween_property(self, "transform", transform.translated(CAMERA.get_global_transform().basis.x * 1 * GRID_SCALE), TWEEN_FACTOR)
 		await motion_tween.finished
 		has_moved = true
 	# Tween rotate left

@@ -23,6 +23,14 @@ omni_shadow_mode = 0
 target_position = Vector3(-1.5, 0, 0)
 collide_with_areas = true
 
+[node name="CastLeft" type="RayCast3D" parent="."]
+target_position = Vector3(0, 0, 1.5)
+collide_with_areas = true
+
+[node name="CastRight" type="RayCast3D" parent="."]
+target_position = Vector3(0, 0, -1.5)
+collide_with_areas = true
+
 [node name="CastBackwards" type="RayCast3D" parent="."]
 target_position = Vector3(1.5, 0, 0)
 collide_with_areas = true
