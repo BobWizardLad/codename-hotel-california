@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://bxttx48q5ieqe"]
+[gd_scene load_steps=5 format=3 uid="uid://bxttx48q5ieqe"]
 
 [ext_resource type="MeshLibrary" uid="uid://ckn3vcy2bt7nh" path="res://assets/meshes/dungeon_tiles.tres" id="1_d5qs0"]
+[ext_resource type="PackedScene" uid="uid://cw7vcg1gnank7" path="res://scenes/portal.tscn" id="2_0spk7"]
 [ext_resource type="PackedScene" uid="uid://rgbfdax3jo7f" path="res://scenes/SodaMachine.tscn" id="2_nif51"]
 [ext_resource type="PackedScene" uid="uid://b3x5ltsjpldgj" path="res://scenes/IceMachine.tscn" id="3_581wh"]
 
@@ -36,3 +37,11 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.992
 text = "Open doors like this one will take you to another floor! Mind your sanity; no one personality can take hold for long..."
 autowrap_mode = 2
 width = 400.0
+
+[node name="Portal" parent="." instance=ExtResource("2_0spk7")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2, 1, 9)
+destination = Vector3i(-6, 1, 8)
+
+[node name="Portal2" parent="." instance=ExtResource("2_0spk7")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4, 1, 9)
+destination = Vector3i(-2, 1, 8)
