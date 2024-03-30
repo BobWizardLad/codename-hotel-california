@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://rgbfdax3jo7f"]
+
+[ext_resource type="Script" path="res://assets/scripts/SodaMachine.gd" id="1_xua1w"]
+[ext_resource type="Texture2D" uid="uid://3wpsxkwvcmlo" path="res://assets/sprites/furniture.png" id="2_61tn5"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8h3pp"]
+size = Vector3(1, 1, 0.0908203)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v6jbx"]
+atlas = ExtResource("2_61tn5")
+region = Rect2(192, 64, 64, 64)
+
+[node name="SodaMachine" type="Area3D"]
+script = ExtResource("1_xua1w")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -1)
+shape = SubResource("BoxShape3D_8h3pp")
+
+[node name="Sprite" type="Sprite3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0.960785, -1)
+texture_filter = 0
+texture = SubResource("AtlasTexture_v6jbx")

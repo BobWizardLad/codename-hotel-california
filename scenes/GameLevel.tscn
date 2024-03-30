@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://bxttx48q5ieqe"]
+
+[ext_resource type="MeshLibrary" uid="uid://ckn3vcy2bt7nh" path="res://assets/meshes/dungeon_tiles.tres" id="1_d5qs0"]
+[ext_resource type="PackedScene" uid="uid://rgbfdax3jo7f" path="res://scenes/SodaMachine.tscn" id="2_nif51"]
+[ext_resource type="PackedScene" uid="uid://b3x5ltsjpldgj" path="res://scenes/IceMachine.tscn" id="3_581wh"]
+
+[node name="GameLevel" type="GridMap"]
+mesh_library = ExtResource("1_d5qs0")
+cell_size = Vector3(1.999, 2, 1.999)
+cell_center_y = false
+data = {
+"cells": PackedInt32Array(0, 0, 8, 0, 1, 1048589, 0, 3, 1048589, 0, 2, 1048580, 65535, 4, 22, 1, 4, 1441793, 0, 4, 1441795, 0, 5, 1441801, 65535, 6, 1048599, 1, 6, 655383, 1, 5, 1441811, 65535, 5, 1048595, 0, 6, 1048579, 65532, 4, 9, 65533, 5, 655383, 65533, 3, 1441824, 65531, 5, 1048608, 65531, 3, 1, 65531, 4, 1048595, 65532, 3, 18, 65532, 5, 655366, 65533, 4, 1441831, 0, 7, 1441796, 0, 8, 1441796, 3, 9, 655364, 5, 9, 1441818, 4, 9, 655375, 0, 11, 1441792, 0, 12, 1441798, 65535, 11, 18, 65535, 12, 1048600, 65534, 11, 4, 65533, 11, 655366, 65532, 11, 655377, 65531, 11, 655379, 65530, 11, 1048608, 65530, 10, 1048593, 65530, 8, 1048593, 65530, 7, 23, 65533, 7, 1441815, 65532, 9, 9, 65532, 8, 3, 65531, 8, 3, 65531, 9, 3, 65532, 10, 3, 65531, 10, 3, 0, 10, 1048580, 2, 9, 655364, 1, 9, 655364, 0, 9, 655370, 65535, 9, 1048578, 65533, 9, 1441810, 65533, 8, 1441798, 65533, 10, 1441792, 65531, 7, 0, 65532, 7, 18, 65530, 9, 1048594, 0, 13, 1441808, 1, 14, 655376, 0, 15, 1048592, 65535, 14, 16, 65534, 14, 655364, 0, 14, 10, 65532, 14, 9, 65533, 14, 3, 65533, 15, 655383, 65531, 13, 23, 65533, 13, 1441793, 65531, 15, 1048598, 65532, 15, 655360, 65532, 13, 18, 65531, 14, 1048576, 1, 16, 1441824, 0, 17, 1048608, 1, 17, 655361, 0, 16, 1048576, 2, 14, 13, 4, 14, 13, 6, 14, 13, 8, 14, 13, 10, 14, 1441822, 3, 14, 655360, 5, 14, 0, 7, 14, 655360, 9, 14, 0, 7, 11, 0, 3, 11, 0, 6, 11, 7, 8, 11, 1441799, 4, 11, 1441799, 2, 11, 7, 3, 12, 1048585, 7, 12, 1048585, 7, 13, 1048580, 3, 13, 1048580, 8, 12, 655383, 6, 12, 1048607, 4, 12, 655391, 2, 12, 1048599, 9, 15, 655362, 5, 16, 655369, 6, 17, 655361, 4, 17, 1048577, 4, 16, 1, 6, 16, 1441793, 5, 17, 655379, 5, 15, 1441808)
+}
+metadata/_editor_floor_ = Vector3(0, 0, 0)
+
+[node name="SodaMachine" parent="." instance=ExtResource("2_nif51")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.931632, 0, 13.0842)
+
+[node name="IceMachine" parent="." instance=ExtResource("3_581wh")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.9, 0, 13)
+
+[node name="IceGuide" type="Label3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 2.9, 1, 13.981)
+text = "Use Ice Machines to restore your focus; the resource your personalities use for special attacks!"
+autowrap_mode = 2
+width = 400.0
+
+[node name="SodaGuide" type="Label3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.980754, 1, 13.9823)
+text = "Use Soda Machines to restore your health; both of these machines take tokens! Nothing is free..."
+autowrap_mode = 2
+width = 400.0
+
+[node name="DoorGuide" type="Label3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.99216, 1, 10.5715)
+text = "Open doors like this one will take you to another floor! Mind your sanity; no one personality can take hold for long..."
+autowrap_mode = 2
+width = 400.0

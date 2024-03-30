@@ -68,7 +68,7 @@ func _process(delta):
 		MAGE_STATE.texture.region = Rect2(112, 128, 32, 32)
 
 func _on_player_popup_interact(msg: String):
-	POPUP_DIALOG.text = msg
+	POPUP_DIALOG.text = msg 
 	POPUP_DIALOG.show()
 
 func _on_player_popup_close():

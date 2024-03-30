@@ -1,18 +1,14 @@
-[gd_scene load_steps=14 format=3 uid="uid://d1fg8ja3fbfom"]
+[gd_scene load_steps=10 format=3 uid="uid://d1fg8ja3fbfom"]
 
 [ext_resource type="PackedScene" uid="uid://cu1fwe52xa2il" path="res://scenes/Player.tscn" id="1_1f0os"]
 [ext_resource type="Script" path="res://assets/scripts/Game_Controller.gd" id="1_6i7ao"]
-[ext_resource type="PackedScene" uid="uid://dcckkqm76twbs" path="res://scenes/GuySpooky.tscn" id="2_ce0b1"]
 [ext_resource type="Script" path="res://assets/scripts/UnitController.gd" id="3_nt3wb"]
 [ext_resource type="Script" path="res://assets/scripts/TurnController.gd" id="4_58lo4"]
 [ext_resource type="PackedScene" uid="uid://bh25gofgorkax" path="res://scenes/text_overlay.tscn" id="5_4vo3a"]
-[ext_resource type="PackedScene" uid="uid://cd2qqmj0mbn2f" path="res://scenes/GuySoul.tscn" id="5_rj4k4"]
-[ext_resource type="PackedScene" uid="uid://b7tqg3biaur5l" path="res://scenes/GuySpite.tscn" id="6_yxm0v"]
 [ext_resource type="Script" path="res://assets/scripts/NavigationService.gd" id="8_r6v64"]
-[ext_resource type="MeshLibrary" uid="uid://ckn3vcy2bt7nh" path="res://assets/meshes/dungeon_tiles.tres" id="9_t73cg"]
+[ext_resource type="PackedScene" uid="uid://bxttx48q5ieqe" path="res://scenes/GameLevel.tscn" id="9_1lbfo"]
 [ext_resource type="Texture2D" uid="uid://ccxtxu2nvstb8" path="res://assets/sprites/dogPainting.png" id="10_qn2km"]
 [ext_resource type="PackedScene" uid="uid://djs4ng2baukv4" path="res://scenes/player_ui.tscn" id="10_r81w4"]
-[ext_resource type="PackedScene" uid="uid://cw7vcg1gnank7" path="res://scenes/portal.tscn" id="11_axbsf"]
 
 [node name="GameController" type="Node3D"]
 script = ExtResource("1_6i7ao")
@@ -22,15 +18,6 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 1, 
 
 [node name="UnitController" type="Node3D" parent="."]
 script = ExtResource("3_nt3wb")
-
-[node name="Enemy" parent="UnitController" instance=ExtResource("5_rj4k4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 1, 4)
-
-[node name="Enemy2" parent="UnitController" instance=ExtResource("6_yxm0v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 1, 0)
-
-[node name="Enemy3" parent="UnitController" instance=ExtResource("2_ce0b1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 1, 12)
 
 [node name="TurnController" type="Node3D" parent="."]
 script = ExtResource("4_58lo4")
@@ -43,27 +30,13 @@ transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 12, 1, -1)
 shaded = true
 texture = ExtResource("10_qn2km")
 
-[node name="Level02" type="GridMap" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -1)
-mesh_library = ExtResource("9_t73cg")
-cell_size = Vector3(1.999, 2, 1.999)
-cell_center_y = false
-data = {
-"cells": PackedInt32Array(0, 0, 1, 1, 0, 17, 3, 0, 1441823, 2, 0, 6, 0, 2, 1048582, 0, 1, 1048595, 1, 1, 1048579, 2, 1, 1048585, 3, 1, 1441792, 2, 2, 655360, 1, 2, 655377, 3, 2, 655367, 0, 3, 1441805, 0, 4, 1441796, 0, 6, 655390, 0, 5, 1048576, 1, 5, 655375, 2, 5, 655363, 3, 5, 655363, 4, 5, 655369, 2, 4, 32, 2, 6, 1048608, 3, 6, 655366, 4, 6, 655360, 6, 6, 655378, 7, 6, 655391, 7, 4, 1441823, 3, 4, 0, 4, 4, 0, 5, 5, 3, 6, 4, 0, 8, 5, 1441817, 5, 6, 655377, 6, 5, 655363, 7, 5, 655363, 7, 0, 1441816, 7, 2, 655361, 5, 0, 1, 5, 1, 1048576, 6, 0, 0, 7, 1, 1441792, 6, 1, 1441802, 5, 2, 1048598, 6, 2, 655366, 5, 4, 39)
-}
-
-[node name="Portal" parent="Level02" groups=["Portals"] instance=ExtResource("11_axbsf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 1, 8)
-destination = Vector3i(10, 1, 4)
-
-[node name="Portal2" parent="Level02" groups=["Portals"] instance=ExtResource("11_axbsf")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 11, 1, 6)
-destination = Vector3i(10, 1, 8)
-
 [node name="PlayerUI" parent="." instance=ExtResource("10_r81w4")]
 
 [node name="TextOverlay" parent="." instance=ExtResource("5_4vo3a")]
 visible = false
+
+[node name="GameLevel" parent="." instance=ExtResource("9_1lbfo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -1)
 
 [connection signal="child_order_changed" from="." to="NavigationService" method="_on_game_child_order_changed"]
 [connection signal="popup_close" from="Player" to="PlayerUI" method="_on_player_popup_close"]
@@ -92,3 +65,4 @@ visible = false
 
 [editable path="Player"]
 [editable path="PlayerUI"]
+[editable path="GameLevel"]

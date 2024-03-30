@@ -33,6 +33,15 @@ func _ready():
 	mage_focus = MAGE_FOCUS_MAX
 	paladin_focus = PALADIN_FOCUS_MAX
 
+func restore_focus():
+	fighter_focus = FIGHTER_FOCUS_MAX
+	rouge_focus = ROUGE_FOCUS_MAX
+	mage_focus = MAGE_FOCUS_MAX
+	paladin_focus = PALADIN_FOCUS_MAX
+
+func restore_health():
+	health = HEALTH_MAX
+
 # Called with the target of the attack (must be a CombatComponent)
 # Attempts a normal attack, returns if the attack was successful
 # or not (invalid target).

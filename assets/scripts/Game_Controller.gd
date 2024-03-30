@@ -4,6 +4,7 @@ extends Node3D
 @onready var NAVIGATION_SERVICE := $NavigationService
 @onready var TURN_CONTROLLER := $TurnController
 @onready var PLAYER := $Player
+@onready var GAME_LEVEL := $GameLevel
 @onready var TEXT_OVERLAY: Control = $TextOverlay
 @onready var level: GridMap
 
@@ -14,7 +15,7 @@ extends Node3D
 var valid_persona_range: Array = []
 
 func _ready():
-	level = find_child("Level02")
+	level = find_child("GameLevel")
 	
 	# Handling Navservice here
 	NAVIGATION_SERVICE.set_current_level(level)
