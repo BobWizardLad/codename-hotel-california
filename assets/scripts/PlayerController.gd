@@ -95,6 +95,7 @@ func _input(event):
 		if event.is_action_pressed("Interact") and CAST_FORWARD.is_colliding() and CAST_FORWARD.get_collider().is_in_group("Portals"):
 			emit_signal("popup_close")
 			CAST_FORWARD.get_collider().warp(self)
+			portal_transitionals()
 			emit_signal("portal_transition")
 
 func _on_fighter_attack():
@@ -192,3 +193,9 @@ func on_turn_end():
 
 func _on_skip_turn_pressed():
 	on_turn_end()
+# Change state to reflect a portal transition
+func portal_transitionals():
+	fighter_is_active = false
+	rouge_is_active = false
+	paladin_is_active = false
+	mage_is_active = false

@@ -8,9 +8,10 @@ extends Node3D
 @onready var level: GridMap
 
 @export var fighter_artifact_get: bool = false
-@export var rouge_artifact_get: bool = false
-@export var paladin_artifact_get: bool = false
+@export var rouge_artifact_get: bool = true
+@export var paladin_artifact_get: bool = true
 @export var mage_artifact_get: bool = false
+var valid_persona_range: Array = []
 
 func _ready():
 	level = find_child("Level02")
@@ -24,11 +25,27 @@ func _ready():
 	_on_portal_transition()
 
 func _on_portal_transition():
-	# Check for artifacts and turn boys on
-	var persona = randi_range(0, 3)
 	var message
 	
-	# --TODO-- only pick boys that are on
+	if fighter_artifact_get:
+		PLAYER.fighter_is_active = true
+	else:
+		valid_persona_range.append(0)
+	if rouge_artifact_get:
+		PLAYER.rouge_is_active = true
+	else:
+		valid_persona_range.append(1)
+	if paladin_artifact_get:
+		PLAYER.paladin_is_active = true
+	else:
+		valid_persona_range.append(2)
+	if mage_artifact_get:
+		PLAYER.mage_is_active = true
+	else:
+		valid_persona_range.append(3)
+	
+	var persona = valid_persona_range.pick_random()
+	
 	if persona == 0:
 		PLAYER.fighter_is_active = true
 		message = "The mind of the Fighter takes hold..."
@@ -45,7 +62,7 @@ func _on_portal_transition():
 		PLAYER.fighter_is_active = true
 		message = "The mind of the Fighter takes hold..."
 	
-	TEXT_OVERLAY._prompt_text_overlay(message, 3)
+	TEXT_OVERLAY._prompt_text_overlay(message, 2.5)
 
 func _process(_delta):
 	sprite_facing()

@@ -11,10 +11,10 @@ extends Control
 @onready var FOCUS_MAGE: TextureProgressBar = $PartyRight/MageFocus
 @onready var FOCUS_PALADIN: TextureProgressBar = $PartyRight/PaladinFocus
 
-@onready var FIGHTER_ATTACK: TextureButton = $PartyLeft/FighterControl/Attack
-@onready var ROUGE_ATTACK: TextureButton = $PartyLeft/RougeControl/Attack
-@onready var MAGE_ATTACK: TextureButton = $PartyRight/MageControl/Attack
-#@onready var PALADIN_ATTACK: TextureButtonb = $
+@onready var FIGHTER_STATE: TextureRect = $PartyLeft/Fighter
+@onready var ROUGE_STATE: TextureRect = $PartyLeft/Rouge
+@onready var MAGE_STATE: TextureRect = $PartyRight/Mage
+@onready var PALADIN_STATE: TextureRect = $PartyRight/Paladin
 
 # Signals
 signal fighter_attack
@@ -39,6 +39,23 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	HEALTH.value = PLAYER.find_child("CombatComponent").health
+	
+	if PLAYER.fighter_is_active:
+		FIGHTER_STATE.texture.region = Rect2(48, 96, 32, 32)
+	else:
+		FIGHTER_STATE.texture.region = Rect2(112, 128, 32, 32)
+	if PLAYER.rouge_is_active:
+		ROUGE_STATE.texture.region = Rect2(80, 96, 32, 32)
+	else:
+		ROUGE_STATE.texture.region = Rect2(112, 128, 32, 32)
+	if PLAYER.paladin_is_active:
+		PALADIN_STATE.texture.region = Rect2(48, 128, 32, 32)
+	else:
+		PALADIN_STATE.texture.region = Rect2(112, 128, 32, 32)
+	if PLAYER.mage_is_active:
+		MAGE_STATE.texture.region = Rect2(80, 128, 32, 32)
+	else:
+		MAGE_STATE.texture.region = Rect2(112, 128, 32, 32)
 
 func _on_player_popup_interact(msg: String):
 	POPUP_DIALOG.text = msg
