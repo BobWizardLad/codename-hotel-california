@@ -35,10 +35,19 @@ signal skip_turn
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	POPUP_DIALOG.hide()
+	
+	FOCUS_FIGHTER.max_value = PLAYER.find_child("CombatComponent").FIGHTER_FOCUS_MAX
+	FOCUS_ROUGE.max_value = PLAYER.find_child("CombatComponent").ROUGE_FOCUS_MAX
+	FOCUS_MAGE.max_value = PLAYER.find_child("CombatComponent").MAGE_FOCUS_MAX
+	FOCUS_PALADIN.max_value = PLAYER.find_child("CombatComponent").PALADIN_FOCUS_MAX
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	HEALTH.value = PLAYER.find_child("CombatComponent").health
+	FOCUS_FIGHTER.value = PLAYER.find_child("CombatComponent").fighter_focus
+	FOCUS_ROUGE.value = PLAYER.find_child("CombatComponent").rouge_focus
+	FOCUS_MAGE.value = PLAYER.find_child("CombatComponent").mage_focus
+	FOCUS_PALADIN.value = PLAYER.find_child("CombatComponent").paladin_focus
 	
 	if PLAYER.fighter_is_active:
 		FIGHTER_STATE.texture.region = Rect2(48, 96, 32, 32)
