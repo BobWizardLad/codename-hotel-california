@@ -11,7 +11,6 @@ script = ExtResource("1_8jn2h")
 
 [node name="PlayerCameraView" type="Camera3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
-current = true
 fov = 90.0
 near = 0.04
 
