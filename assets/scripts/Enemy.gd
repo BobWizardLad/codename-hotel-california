@@ -11,6 +11,7 @@ extends Node3D
 
 @export var TWEEN_FACTOR = 0.3 # Affects camera interpolation speed
 @export var GRID_SCALE = 2 # Factor for movement; constrains grid
+@export var animation_death: SpriteFrames
 
 var motion_tween: Tween
 var is_player_visible: bool
@@ -30,6 +31,11 @@ func _process(_delta):
 
 func set_target(target_val: Vector3i):
 	target = target_val
+
+func animate_death():
+	SPRITE.sprite_frames = animation_death
+	SPRITE.play()
+	await SPRITE.animation_finished
 
 # move_step takes a target location and will move the enemy towards it
 # target location is detemined by the greatest distance to travel. i.e. if

@@ -1,0 +1,60 @@
+[gd_resource type="SpriteFrames" load_steps=9 format=3 uid="uid://cufe36kjgnodg"]
+
+[ext_resource type="Texture2D" uid="uid://cae6n4b42xyj8" path="res://assets/sprites/guySoul_death.png" id="1_ess8i"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e0cme"]
+atlas = ExtResource("1_ess8i")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k3b0p"]
+atlas = ExtResource("1_ess8i")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sie1m"]
+atlas = ExtResource("1_ess8i")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2dksf"]
+atlas = ExtResource("1_ess8i")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lhmbi"]
+atlas = ExtResource("1_ess8i")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nqtqc"]
+atlas = ExtResource("1_ess8i")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v1w30"]
+atlas = ExtResource("1_ess8i")
+region = Rect2(384, 0, 64, 64)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e0cme")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k3b0p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sie1m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2dksf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lhmbi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nqtqc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v1w30")
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}]

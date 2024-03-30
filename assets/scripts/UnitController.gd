@@ -15,6 +15,7 @@ func _ready():
 func _on_enemy_turn():
 	for each in get_children():
 		if each.COMBAT_COMPONENT.health == 0:
+			each.animate_death()
 			each.queue_free()
 			continue
 		if NAVIGATION_SERVICE.get_directions(each.position, PLAYER.position).size() <= 8:

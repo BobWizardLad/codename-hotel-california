@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://b7tqg3biaur5l"]
+[gd_scene load_steps=9 format=3 uid="uid://b7tqg3biaur5l"]
 
 [ext_resource type="Script" path="res://assets/scripts/Enemy.gd" id="1_7pbhr"]
 [ext_resource type="Texture2D" uid="uid://810wnwvk5kdf" path="res://assets/sprites/lieSpite-Sheet.png" id="2_of8ph"]
+[ext_resource type="SpriteFrames" uid="uid://do42vgvfndvhc" path="res://assets/sprite_frames/spite_death.tres" id="2_rkwnl"]
 [ext_resource type="Script" path="res://assets/scripts/CombatComponent.gd" id="3_x0ymg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5bjtd"]
@@ -31,6 +32,7 @@ animations = [{
 [node name="Enemy" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, 2)
 script = ExtResource("1_7pbhr")
+animation_death = ExtResource("2_rkwnl")
 
 [node name="Sprite" type="AnimatedSprite3D" parent="."]
 transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, 0, -0.393879, 0)

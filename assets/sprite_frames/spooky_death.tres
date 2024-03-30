@@ -1,0 +1,67 @@
+[gd_resource type="SpriteFrames" load_steps=10 format=3 uid="uid://buvg1ypeybdut"]
+
+[ext_resource type="Texture2D" uid="uid://bwvixk21ihe66" path="res://assets/sprites/guySpooky_death.png" id="1_ga4ut"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fn8rq"]
+atlas = ExtResource("1_ga4ut")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jrmh5"]
+atlas = ExtResource("1_ga4ut")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hgxu0"]
+atlas = ExtResource("1_ga4ut")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gcy7i"]
+atlas = ExtResource("1_ga4ut")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pp7da"]
+atlas = ExtResource("1_ga4ut")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jgjlu"]
+atlas = ExtResource("1_ga4ut")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m0ctu"]
+atlas = ExtResource("1_ga4ut")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kx60d"]
+atlas = ExtResource("1_ga4ut")
+region = Rect2(448, 0, 64, 64)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fn8rq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jrmh5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hgxu0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gcy7i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pp7da")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jgjlu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m0ctu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kx60d")
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}]
