@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://djs4ng2baukv4"]
+[gd_scene load_steps=39 format=3 uid="uid://djs4ng2baukv4"]
 
 [ext_resource type="Script" path="res://assets/scripts/player_ui.gd" id="1_xygem"]
 [ext_resource type="Texture2D" uid="uid://d3a7wwiqkur6j" path="res://assets/sprites/UI_spritesheet.png" id="2_tujh6"]
@@ -80,6 +80,14 @@ region = Rect2(32, 32, 16, 10)
 atlas = ExtResource("2_tujh6")
 region = Rect2(144, 96, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_finq8"]
+atlas = ExtResource("2_tujh6")
+region = Rect2(208, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3582l"]
+atlas = ExtResource("2_tujh6")
+region = Rect2(176, 96, 32, 32)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_8hprf"]
 atlas = ExtResource("2_tujh6")
 region = Rect2(0, 64, 32, 16)
@@ -103,6 +111,14 @@ region = Rect2(80, 128, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_a48q1"]
 atlas = ExtResource("2_tujh6")
 region = Rect2(144, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7l3qd"]
+atlas = ExtResource("2_tujh6")
+region = Rect2(208, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jknso"]
+atlas = ExtResource("2_tujh6")
+region = Rect2(176, 128, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rhcoo"]
 atlas = ExtResource("2_tujh6")
@@ -248,6 +264,8 @@ custom_minimum_size = Vector2(144, 149)
 layout_mode = 2
 size_flags_vertical = 3
 texture_normal = SubResource("AtlasTexture_8yp8v")
+texture_pressed = SubResource("AtlasTexture_finq8")
+texture_hover = SubResource("AtlasTexture_3582l")
 stretch_mode = 0
 
 [node name="PartyRight" type="VBoxContainer" parent="."]
@@ -346,11 +364,13 @@ texture_pressed = SubResource("AtlasTexture_rhyvd")
 texture_hover = SubResource("AtlasTexture_3soiw")
 stretch_mode = 0
 
-[node name="Deco" type="TextureButton" parent="PartyRight"]
+[node name="SkipTurn" type="TextureButton" parent="PartyRight"]
 custom_minimum_size = Vector2(144, 149)
 layout_mode = 2
 size_flags_vertical = 3
 texture_normal = SubResource("AtlasTexture_a48q1")
+texture_pressed = SubResource("AtlasTexture_7l3qd")
+texture_hover = SubResource("AtlasTexture_jknso")
 stretch_mode = 0
 
 [node name="BottomPanel" type="TextureRect" parent="."]

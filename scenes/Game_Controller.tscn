@@ -76,9 +76,11 @@ visible = false
 [connection signal="pressed" from="PlayerUI/PartyLeft/FighterControl/FocusAttack" to="Player" method="_on_fighter_focus_attack"]
 [connection signal="pressed" from="PlayerUI/PartyLeft/RougeControl/Attack" to="Player" method="_on_rouge_attack"]
 [connection signal="pressed" from="PlayerUI/PartyLeft/RougeControl/FocusAttack" to="Player" method="_on_rouge_focus_attack"]
+[connection signal="pressed" from="PlayerUI/PartyLeft/AttackAll" to="Player" method="_on_attack_all_pressed"]
 [connection signal="pressed" from="PlayerUI/PartyRight/PaladinControl/Attack" to="Player" method="_on_paladin_attack"]
 [connection signal="pressed" from="PlayerUI/PartyRight/PaladinControl/FocusAttack" to="Player" method="_on_paladin_focus_attack"]
 [connection signal="pressed" from="PlayerUI/PartyRight/MageControl/Attack" to="Player" method="_on_mage_attack"]
 [connection signal="pressed" from="PlayerUI/PartyRight/MageControl/FocusAttack" to="Player" method="_on_mage_focus_attack"]
+[connection signal="pressed" from="PlayerUI/PartyRight/SkipTurn" to="Player" method="_on_skip_turn_pressed"]
 
 [editable path="PlayerUI"]

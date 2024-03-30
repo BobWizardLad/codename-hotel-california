@@ -95,6 +95,12 @@ func _on_paladin_focus_attack():
 		COMBAT_COMPONENT.paladin_focus_attack(CAST_FORWARD.get_collider().get_parent().find_child("CombatComponent"))
 		paladin_has_attacked = true
 
+func _on_attack_all_pressed():
+	_on_fighter_attack()
+	_on_rouge_attack()
+	_on_paladin_attack()
+	_on_mage_attack()
+
 func player_move(event):
 	if motion_tween is Tween: # Halt another tween if one is running
 		if motion_tween.is_running():
@@ -141,3 +147,6 @@ func on_turn_end():
 	paladin_has_attacked = false
 	has_moved = false
 	emit_signal("turn_end")
+
+func _on_skip_turn_pressed():
+	on_turn_end()
