@@ -121,7 +121,6 @@ func _on_paladin_attack():
 func _on_fighter_focus_attack():
 	if fighter_is_active == true and CAST_FORWARD.is_colliding() and CAST_FORWARD.get_collider().get_parent().get_parent().name == "UnitController":
 		COMBAT_COMPONENT.fighter_focus_attack(CAST_FORWARD.get_collider().get_parent().find_child("CombatComponent"))
-		fighter_has_attacked = true
 
 func _on_rouge_focus_attack():
 	if rouge_is_active == true and rouge_has_attacked == false and CAST_FORWARD.is_colliding() and CAST_FORWARD.get_collider().get_parent().get_parent().name == "UnitController":
@@ -131,6 +130,12 @@ func _on_rouge_focus_attack():
 func _on_mage_focus_attack():
 	if mage_is_active == true and mage_has_attacked == false and CAST_FORWARD.is_colliding() and CAST_FORWARD.get_collider().get_parent().get_parent().name == "UnitController":
 		COMBAT_COMPONENT.mage_focus_attack(CAST_FORWARD.get_collider().get_parent().find_child("CombatComponent"))
+		if CAST_BACKWARDS.is_colliding() and CAST_BACKWARDS.get_collider().get_parent().find_child("CombatComponent") != null:
+			COMBAT_COMPONENT.mage_focus_attack(CAST_BACKWARDS.get_collider().get_parent().find_child("CombatComponent"))
+		if CAST_LEFT.is_colliding() and CAST_LEFT.get_collider().get_parent().find_child("CombatComponent") != null:
+			COMBAT_COMPONENT.mage_focus_attack(CAST_LEFT.get_collider().get_parent().find_child("CombatComponent"))
+		if CAST_RIGHT.is_colliding() and CAST_RIGHT.get_collider().get_parent().find_child("CombatComponent") != null:
+			COMBAT_COMPONENT.mage_focus_attack(CAST_RIGHT.get_collider().get_parent().find_child("CombatComponent"))
 		mage_has_attacked = true
 
 func _on_paladin_focus_attack():

@@ -7,10 +7,10 @@ extends Node3D
 @onready var TEXT_OVERLAY : Control = $TextOverlay
 @onready var level: GridMap
 
-@export var fighter_artifact_get: bool = false
+@export var fighter_artifact_get: bool = true
 @export var rouge_artifact_get: bool = true
 @export var paladin_artifact_get: bool = true
-@export var mage_artifact_get: bool = false
+@export var mage_artifact_get: bool = true
 var valid_persona_range: Array = []
 
 func _ready():
@@ -44,7 +44,12 @@ func _on_portal_transition():
 	else:
 		valid_persona_range.append(3)
 	
-	var persona = valid_persona_range.pick_random()
+	var persona: int
+	if valid_persona_range.size() > 0:
+		persona = valid_persona_range.pick_random()
+	else:
+		message = "You have regained mastery over your mind..."
+		persona = 5
 	
 	if persona == 0:
 		PLAYER.fighter_is_active = true
@@ -59,8 +64,7 @@ func _on_portal_transition():
 		PLAYER.mage_is_active = true
 		message = "The mind of the Mage takes hold..."
 	else:
-		PLAYER.fighter_is_active = true
-		message = "The mind of the Fighter takes hold..."
+		pass
 	
 	TEXT_OVERLAY._prompt_text_overlay(message, 2.5)
 
