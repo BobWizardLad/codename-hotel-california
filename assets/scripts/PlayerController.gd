@@ -18,6 +18,7 @@ extends Node3D
 signal turn_end
 signal popup_interact
 signal popup_close
+signal portal_transition
 
 var fighter_is_active: bool = false
 var mage_is_active: bool = false
@@ -38,8 +39,48 @@ var motion_tween
 func _ready():
 	add_to_group("Player")
 
+# returns true if persona has attacked when it needs to, or if mage is inactive
+# else remove false
+func if_mage_is_ready():
+	if mage_is_active and mage_has_attacked:
+		return true
+	elif not mage_is_active:
+		return true
+	else:
+		return false
+
+# returns true if persona has attacked when it needs to, or if mage is inactive
+# else remove false
+func if_fighter_is_ready():
+	if fighter_is_active and fighter_has_attacked:
+		return true
+	elif not fighter_is_active:
+		return true
+	else:
+		return false
+
+# returns true if persona has attacked when it needs to, or if mage is inactive
+# else remove false
+func if_rouge_is_ready():
+	if rouge_is_active and rouge_has_attacked:
+		return true
+	elif not rouge_is_active:
+		return true
+	else:
+		return false
+
+# returns true if persona has attacked when it needs to, or if mage is inactive
+# else remove false
+func if_paladin_is_ready():
+	if paladin_is_active and paladin_has_attacked:
+		return true
+	elif not paladin_is_active:
+		return true
+	else:
+		return false
+
 func _process(_delta):
-	if has_moved or (mage_has_attacked and fighter_has_attacked and rouge_has_attacked and paladin_has_attacked):
+	if has_moved or (if_mage_is_ready() and if_fighter_is_ready() and if_paladin_is_ready() and if_rouge_is_ready()):
 		on_turn_end()
 	if CAST_FORWARD.is_colliding() and CAST_FORWARD.get_collider().is_in_group("Portals"):
 		emit_signal("popup_interact", "Interact [F] to continue forward...")
@@ -54,44 +95,45 @@ func _input(event):
 		if event.is_action_pressed("Interact") and CAST_FORWARD.is_colliding() and CAST_FORWARD.get_collider().is_in_group("Portals"):
 			emit_signal("popup_close")
 			CAST_FORWARD.get_collider().warp(self)
+			emit_signal("portal_transition")
 
 func _on_fighter_attack():
-	if fighter_has_attacked == false and CAST_FORWARD.is_colliding() and CAST_FORWARD.get_collider().get_parent().get_parent().name == "UnitController":
+	if fighter_is_active == true and fighter_has_attacked == false and CAST_FORWARD.is_colliding() and CAST_FORWARD.get_collider().get_parent().get_parent().name == "UnitController":
 		COMBAT_COMPONENT.fighter_attack(CAST_FORWARD.get_collider().get_parent().find_child("CombatComponent"))
 		fighter_has_attacked = true
 
 func _on_rouge_attack():
-	if rouge_has_attacked == false and CAST_FORWARD.is_colliding() and CAST_FORWARD.get_collider().get_parent().get_parent().name == "UnitController":
+	if rouge_is_active == true and rouge_has_attacked == false and CAST_FORWARD.is_colliding() and CAST_FORWARD.get_collider().get_parent().get_parent().name == "UnitController":
 		COMBAT_COMPONENT.rouge_attack(CAST_FORWARD.get_collider().get_parent().find_child("CombatComponent"))
 		rouge_has_attacked = true
 
 func _on_mage_attack():
-	if mage_has_attacked == false and CAST_FORWARD.is_colliding() and CAST_FORWARD.get_collider().get_parent().get_parent().name == "UnitController":
+	if mage_is_active == true and mage_has_attacked == false and CAST_FORWARD.is_colliding() and CAST_FORWARD.get_collider().get_parent().get_parent().name == "UnitController":
 		COMBAT_COMPONENT.mage_attack(CAST_FORWARD.get_collider().get_parent().find_child("CombatComponent"))
 		mage_has_attacked = true
 
 func _on_paladin_attack():
-	if paladin_has_attacked == false and CAST_FORWARD.is_colliding() and CAST_FORWARD.get_collider().get_parent().get_parent().name == "UnitController":
+	if paladin_is_active == true and paladin_has_attacked == false and CAST_FORWARD.is_colliding() and CAST_FORWARD.get_collider().get_parent().get_parent().name == "UnitController":
 		COMBAT_COMPONENT.paladin_attack(CAST_FORWARD.get_collider().get_parent().find_child("CombatComponent"))
 		paladin_has_attacked = true
 
 func _on_fighter_focus_attack():
-	if CAST_FORWARD.is_colliding() and CAST_FORWARD.get_collider().get_parent().get_parent().name == "UnitController":
+	if fighter_is_active == true and CAST_FORWARD.is_colliding() and CAST_FORWARD.get_collider().get_parent().get_parent().name == "UnitController":
 		COMBAT_COMPONENT.fighter_focus_attack(CAST_FORWARD.get_collider().get_parent().find_child("CombatComponent"))
 		fighter_has_attacked = true
 
 func _on_rouge_focus_attack():
-	if rouge_has_attacked == false and CAST_FORWARD.is_colliding() and CAST_FORWARD.get_collider().get_parent().get_parent().name == "UnitController":
+	if rouge_is_active == true and rouge_has_attacked == false and CAST_FORWARD.is_colliding() and CAST_FORWARD.get_collider().get_parent().get_parent().name == "UnitController":
 		COMBAT_COMPONENT.rouge_focus_attack(CAST_FORWARD.get_collider().get_parent().find_child("CombatComponent"))
 		rouge_has_attacked = true
 
 func _on_mage_focus_attack():
-	if mage_has_attacked == false and CAST_FORWARD.is_colliding() and CAST_FORWARD.get_collider().get_parent().get_parent().name == "UnitController":
+	if mage_is_active == true and mage_has_attacked == false and CAST_FORWARD.is_colliding() and CAST_FORWARD.get_collider().get_parent().get_parent().name == "UnitController":
 		COMBAT_COMPONENT.mage_focus_attack(CAST_FORWARD.get_collider().get_parent().find_child("CombatComponent"))
 		mage_has_attacked = true
 
 func _on_paladin_focus_attack():
-	if paladin_has_attacked == false and CAST_FORWARD.is_colliding() and CAST_FORWARD.get_collider().get_parent().get_parent().name == "UnitController":
+	if paladin_is_active == true and paladin_has_attacked == false and CAST_FORWARD.is_colliding() and CAST_FORWARD.get_collider().get_parent().get_parent().name == "UnitController":
 		COMBAT_COMPONENT.paladin_focus_attack(CAST_FORWARD.get_collider().get_parent().find_child("CombatComponent"))
 		paladin_has_attacked = true
 

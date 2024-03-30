@@ -2,6 +2,8 @@ extends Node3D
 
 # Is it the player's turn?
 @export var player_turn: bool
+# External Nodes
+@onready var PLAYER: Node = get_node("../Player")
 
 signal take_enemy_turn
 signal take_player_turn
