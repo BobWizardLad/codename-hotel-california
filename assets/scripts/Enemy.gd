@@ -20,7 +20,7 @@ var target: Vector3i
 var current_path: PackedVector3Array
 
 func _ready():
-	pass
+	add_to_group("Enemies")
 
 func _process(_delta):
 	var health_modulate = COMBAT_COMPONENT.health * .01

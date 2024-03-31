@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://d1fg8ja3fbfom"]
+[gd_scene load_steps=16 format=3 uid="uid://d1fg8ja3fbfom"]
 
 [ext_resource type="PackedScene" uid="uid://cu1fwe52xa2il" path="res://scenes/Player.tscn" id="1_1f0os"]
 [ext_resource type="Script" path="res://assets/scripts/Game_Controller.gd" id="1_6i7ao"]
@@ -13,6 +13,9 @@
 [ext_resource type="PackedScene" uid="uid://b2iu4yxtq2u5e" path="res://scenes/GameLevel.tscn" id="9_1lbfo"]
 [ext_resource type="PackedScene" uid="uid://djs4ng2baukv4" path="res://scenes/player_ui.tscn" id="10_r81w4"]
 [ext_resource type="Script" path="res://assets/scripts/Jukebox.gd" id="13_mnsg3"]
+[ext_resource type="PackedScene" uid="uid://br81f2d2733iv" path="res://scenes/Credits.tscn" id="14_qc7vg"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ou1tv"]
 
 [node name="GameController" type="Node3D"]
 script = ExtResource("1_6i7ao")
@@ -151,8 +154,24 @@ Beserker: Free Attack
 Holy: Defense Down
 Mystic: all adjacent tiles AoE"
 
+[node name="ThrillerTrigger" type="Area3D" parent="GameLevel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 0, 55)
+
+[node name="ShapeCast3D" type="CollisionShape3D" parent="GameLevel/ThrillerTrigger"]
+shape = SubResource("BoxShape3D_ou1tv")
+
+[node name="CreditsTrigger" type="Area3D" parent="GameLevel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31, 0, 29)
+
+[node name="ShapeCast3D" type="CollisionShape3D" parent="GameLevel/CreditsTrigger"]
+shape = SubResource("BoxShape3D_ou1tv")
+
 [node name="Jukebox" type="AudioStreamPlayer" parent="."]
+volume_db = -10.0
 script = ExtResource("13_mnsg3")
+
+[node name="Credits" parent="." instance=ExtResource("14_qc7vg")]
+visible = false
 
 [connection signal="child_order_changed" from="." to="NavigationService" method="_on_game_child_order_changed"]
 [connection signal="artifact_pickup" from="Player" to="." method="_on_player_artifact_pickup"]
@@ -183,6 +202,8 @@ script = ExtResource("13_mnsg3")
 [connection signal="pressed" from="PlayerUI/PartyRight/MageControl/FocusAttack" to="Player" method="_on_mage_focus_attack"]
 [connection signal="pressed" from="PlayerUI/PartyRight/SkipTurn" to="Player" method="_on_skip_turn_pressed"]
 [connection signal="pressed" from="PlayerUI/PartyRight/SkipTurn" to="PlayerUI" method="_on_skip_turn_pressed"]
+[connection signal="area_entered" from="GameLevel/ThrillerTrigger" to="Jukebox" method="_on_area_3d_area_entered"]
+[connection signal="area_entered" from="GameLevel/CreditsTrigger" to="." method="_on_credits_area_entered"]
 
 [editable path="Player"]
 [editable path="PlayerUI"]

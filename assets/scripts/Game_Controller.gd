@@ -1,6 +1,8 @@
 extends Node3D
 
 @onready var PLAYER_UI := $PlayerUI
+@onready var JUKEBOX: AudioStreamPlayer = $Jukebox
+@onready var CREDITS: Control = $Credits
 @onready var UNIT_CONTROLLER := $UnitController
 @onready var NAVIGATION_SERVICE := $NavigationService
 @onready var TURN_CONTROLLER := $TurnController
@@ -88,7 +90,6 @@ func sprite_facing():
 	for x in UNIT_CONTROLLER.get_children():
 		x.find_child("Sprite").look_at(PLAYER.position)
 
-
 func _on_player_artifact_pickup(identity: String):
 	print("SIGNAL PASSED")
 	if identity == "Fighter":
@@ -109,3 +110,7 @@ func _on_player_artifact_pickup(identity: String):
 		TEXT_OVERLAY._prompt_text_overlay("You have aquired the mystic artifact", 2.5)
 	else:
 		return
+
+func _on_credits_area_entered(area):
+	CREDITS.show()
+	JUKEBOX._play_end_credits()

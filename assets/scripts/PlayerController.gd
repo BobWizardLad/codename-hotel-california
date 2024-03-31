@@ -8,6 +8,7 @@ extends Node3D
 @onready var CAST_RIGHT := $CastRight
 @onready var CAST_BACKWARDS := $CastBackwards
 @onready var COMBAT_COMPONENT := $CombatComponent
+@onready var FX_PLAYER: AudioStreamPlayer = $FXPlayer
 
 # Constant Scalar Values
 @export var GRID_SCALE = 2 # Factor for movement; constrains grid
@@ -145,41 +146,48 @@ func _input(event):
 
 func _on_fighter_attack():
 	if fighter_is_active == true and fighter_has_attacked == false and CAST_FORWARD.is_colliding() and CAST_FORWARD.get_collider().get_parent().get_parent().name == "UnitController":
+		FX_PLAYER.on_attack_fx()
 		COMBAT_COMPONENT.fighter_attack(CAST_FORWARD.get_collider().get_parent().find_child("CombatComponent"))
 		fighter_has_attacked = true
 
 func _on_rouge_attack():
 	if rouge_is_active == true and rouge_has_attacked == false and CAST_FORWARD.is_colliding() and CAST_FORWARD.get_collider().get_parent().get_parent().name == "UnitController":
+		FX_PLAYER.on_attack_fx()
 		COMBAT_COMPONENT.rouge_attack(CAST_FORWARD.get_collider().get_parent().find_child("CombatComponent"))
 		rouge_has_attacked = true
 
 func _on_mage_attack():
 	if mage_is_active == true and mage_has_attacked == false and CAST_FORWARD.is_colliding() and CAST_FORWARD.get_collider().get_parent().get_parent().name == "UnitController":
+		FX_PLAYER.on_attack_fx()
 		COMBAT_COMPONENT.mage_attack(CAST_FORWARD.get_collider().get_parent().find_child("CombatComponent"))
 		mage_has_attacked = true
 
 func _on_paladin_attack():
 	if paladin_is_active == true and paladin_has_attacked == false and CAST_FORWARD.is_colliding() and CAST_FORWARD.get_collider().get_parent().get_parent().name == "UnitController":
+		FX_PLAYER.on_attack_fx()
 		COMBAT_COMPONENT.paladin_attack(CAST_FORWARD.get_collider().get_parent().find_child("CombatComponent"))
 		paladin_has_attacked = true
 
 func _on_fighter_focus_attack():
 	if fighter_is_active == true and CAST_FORWARD.is_colliding() and CAST_FORWARD.get_collider().get_parent().get_parent().name == "UnitController":
+		FX_PLAYER.on_attack_fx()
 		COMBAT_COMPONENT.fighter_focus_attack(CAST_FORWARD.get_collider().get_parent().find_child("CombatComponent"))
 
 func _on_rouge_focus_attack():
 	if rouge_is_active == true and rouge_has_attacked == false and CAST_FORWARD.is_colliding() and CAST_FORWARD.get_collider().get_parent().get_parent().name == "UnitController":
+		FX_PLAYER.on_attack_fx()
 		COMBAT_COMPONENT.rouge_focus_attack(CAST_FORWARD.get_collider().get_parent().find_child("CombatComponent"))
 		rouge_has_attacked = true
 
 func _on_mage_focus_attack():
 	if mage_is_active == true and mage_has_attacked == false and CAST_FORWARD.is_colliding() and CAST_FORWARD.get_collider().get_parent().get_parent().name == "UnitController":
+		FX_PLAYER.on_attack_fx()
 		COMBAT_COMPONENT.mage_focus_attack(CAST_FORWARD.get_collider().get_parent().find_child("CombatComponent"))
-		if CAST_BACKWARDS.is_colliding() and CAST_BACKWARDS.get_collider().get_parent().find_child("CombatComponent") != null:
+		if CAST_BACKWARDS.is_colliding() and CAST_BACKWARDS.get_collider().get_parent().find_child("CombatComponent") != null and CAST_BACKWARDS.get_collider().get_parent().is_in_group("Enemies"):
 			COMBAT_COMPONENT.mage_focus_attack(CAST_BACKWARDS.get_collider().get_parent().find_child("CombatComponent"))
-		if CAST_LEFT.is_colliding() and CAST_LEFT.get_collider().get_parent().find_child("CombatComponent") != null:
+		if CAST_LEFT.is_colliding() and CAST_LEFT.get_collider().get_parent().find_child("CombatComponent") != null and CAST_LEFT.get_collider().get_parent().is_in_group("Enemies"):
 			COMBAT_COMPONENT.mage_focus_attack(CAST_LEFT.get_collider().get_parent().find_child("CombatComponent"))
-		if CAST_RIGHT.is_colliding() and CAST_RIGHT.get_collider().get_parent().find_child("CombatComponent") != null:
+		if CAST_RIGHT.is_colliding() and CAST_RIGHT.get_collider().get_parent().find_child("CombatComponent") != null and CAST_RIGHT.get_collider().get_parent().is_in_group("Enemies"):
 			COMBAT_COMPONENT.mage_focus_attack(CAST_RIGHT.get_collider().get_parent().find_child("CombatComponent"))
 		COMBAT_COMPONENT.mage_focus -= 1 # Making an exception here for mage atk
 		mage_has_attacked = true
@@ -205,6 +213,8 @@ func player_move(event):
 		motion_tween.tween_property(self, "transform", transform.translated(CAMERA.get_global_transform().basis.z * -1 * GRID_SCALE), TWEEN_FACTOR)
 		await motion_tween.finished
 		has_moved = true
+	elif event.is_action_pressed("Move_Forward") and CAST_FORWARD.is_colliding():
+		FX_PLAYER.on_wall_collide()
 	# Tween backwards
 	elif event.is_action_pressed("Move_Back") and not CAST_BACKWARDS.is_colliding():
 		motion_tween = create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN_OUT)
@@ -216,13 +226,17 @@ func player_move(event):
 		motion_tween.tween_property(self, "transform", transform.translated(CAMERA.get_global_transform().basis.x * -1 * GRID_SCALE), TWEEN_FACTOR)
 		await motion_tween.finished
 		has_moved = true
+	elif event.is_action_pressed("Move_Left") and CAST_LEFT.is_colliding():
+		FX_PLAYER.on_wall_collide()
 	elif event.is_action_pressed("Move_Right") and not CAST_RIGHT.is_colliding():
 		motion_tween = create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN_OUT)
 		motion_tween.tween_property(self, "transform", transform.translated(CAMERA.get_global_transform().basis.x * 1 * GRID_SCALE), TWEEN_FACTOR)
 		await motion_tween.finished
 		has_moved = true
+	elif event.is_action_pressed("Move_Right") and CAST_RIGHT.is_colliding():
+		FX_PLAYER.on_wall_collide()
 	# Tween rotate left
-	elif event.is_action_pressed("Rotate_Left"):
+	if event.is_action_pressed("Rotate_Left"):
 		motion_tween = create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN_OUT)
 		motion_tween.tween_property(self, "transform:basis", transform.basis.rotated(Vector3.UP, ROTATE_SCALE), TWEEN_FACTOR)
 	# Tween rotate right
