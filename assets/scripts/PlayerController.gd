@@ -103,9 +103,11 @@ func _process(_delta):
 		emit_signal("popup_interact", "Soda is healthy... right? [F]")
 		looking_at_popup = true
 	elif $Area.has_overlapping_areas() and $Area.get_overlapping_areas()[0].get_parent().is_in_group("Artifacts"):
+		$PickupFxPlayer.on_collect()
 		emit_signal("artifact_pickup", $Area.get_overlapping_areas()[0].get_parent().identity)
 		$Area.get_overlapping_areas()[0].get_parent().queue_free()
 	elif $Area.has_overlapping_areas() and $Area.get_overlapping_areas()[0].get_parent().is_in_group("Coins"):
+		$PickupFxPlayer.on_collect()
 		tokens += 1
 		$Area.get_overlapping_areas()[0].get_parent().queue_free()
 	
@@ -120,7 +122,7 @@ func _process(_delta):
 			COMBAT_COMPONENT.health = revive_life
 			revive_life -= 25
 		else:
-			pass # Throw game over screen
+			pass # TODO Throw game over screen
 
 func _input(event):
 	if is_on_turn:
@@ -134,12 +136,14 @@ func _input(event):
 		# Ice Machine
 		if tokens > 0 and event.is_action_pressed("Interact") and CAST_FORWARD.is_colliding() and CAST_FORWARD.get_collider().is_in_group("IceMachines"):
 			emit_signal("popup_close")
+			$PickupFxPlayer.on_collect()
 			COMBAT_COMPONENT.restore_focus()
 			emit_signal("restore_focus")
 			tokens -= 1
 		# Soda Machine
 		if tokens > 0 and event.is_action_pressed("Interact") and CAST_FORWARD.is_colliding() and CAST_FORWARD.get_collider().is_in_group("SodaMachines"):
 			emit_signal("popup_close")
+			$PickupFxPlayer.on_collect()
 			COMBAT_COMPONENT.restore_health()
 			emit_signal("restore_health")
 			tokens -= 1

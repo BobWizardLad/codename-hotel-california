@@ -28,6 +28,9 @@ extends Control
 var color_tween: Tween
 var color_tween_factor: float = 0.6
 
+var inactive_modulate: Color = Color(0.4, 0.4, 0.4, 1.0)
+var normal_modulate: Color = Color(1.0, 1.0, 1.0, 1.0)
+
 # Signals
 signal fighter_attack
 signal fighter_focus_attack
@@ -62,6 +65,23 @@ func _process(delta):
 	FOCUS_MAGE.value = PLAYER.find_child("CombatComponent").mage_focus
 	FOCUS_PALADIN.value = PLAYER.find_child("CombatComponent").paladin_focus
 	TOKEN_COUNT.text = String.num_int64(PLAYER.tokens)
+	
+	if PLAYER.fighter_has_attacked:
+		FIGHTER_STATE.modulate = inactive_modulate
+	else:
+		FIGHTER_STATE.modulate = normal_modulate
+	if PLAYER.rouge_has_attacked:
+		ROUGE_STATE.modulate = inactive_modulate
+	else:
+		ROUGE_STATE.modulate = normal_modulate
+	if PLAYER.paladin_has_attacked:
+		PALADIN_STATE.modulate = inactive_modulate
+	else:
+		PALADIN_STATE.modulate = normal_modulate
+	if PLAYER.mage_has_attacked:
+		MAGE_STATE.modulate = inactive_modulate
+	else:
+		MAGE_STATE.modulate = normal_modulate
 	
 	if PLAYER.fighter_is_active:
 		FIGHTER_STATE.texture.region = Rect2(48, 96, 32, 32)

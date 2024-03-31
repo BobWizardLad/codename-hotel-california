@@ -1,0 +1,143 @@
+[gd_scene load_steps=4 format=3 uid="uid://duju8xr76r362"]
+
+[ext_resource type="Texture2D" uid="uid://dbydj05jdu8x0" path="res://assets/sprites/logo_intro.png" id="1_4egq4"]
+[ext_resource type="Script" path="res://assets/scripts/introduction.gd" id="1_kvaak"]
+[ext_resource type="Texture2D" uid="uid://xubsmeh1rhnt" path="res://assets/sprites/door_intro.png" id="2_mqvff"]
+
+[node name="Introduction" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kvaak")
+
+[node name="Hotel" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_4egq4")
+
+[node name="Label" type="Label" parent="Hotel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -549.0
+offset_top = -287.0
+offset_right = -229.0
+offset_bottom = -134.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Your mind is broken. Shattered into pieces and you do not know why. All you know is that you feel a compulsion to this hotel. A mysterious landmark shooting into the rolling clouds at a seemingly infinite climb."
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Label2" type="Label" parent="Hotel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -545.0
+offset_top = -99.0
+offset_right = -225.0
+offset_bottom = 54.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Perhaps the thing that did this to you is here. Perhaps you know something it does not. Perhaps it is luring you into a trap.
+
+You have little choice but to approach it."
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Label3" type="Label" parent="Hotel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -538.0
+offset_top = 106.0
+offset_right = -218.0
+offset_bottom = 259.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Who Knows, perhaps the key to restoring your shattered mind lies in this hotel. Despite being shattered, your mind seems to be more pwerful than it was before. If only you could wrest control over it once again..."
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Continue" type="Button" parent="Hotel"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Continue"
+
+[node name="Door" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_mqvff")
+
+[node name="Label" type="Label" parent="Door"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -377.0
+offset_top = 21.0
+offset_right = 377.0
+offset_bottom = 118.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 50
+text = "MindCrawler"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Start" type="Button" parent="Door"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 41.0
+offset_top = 22.0
+offset_right = 220.0
+offset_bottom = 85.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Enter The Hotel
+"
+
+[node name="Exit" type="Button" parent="Door"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -218.0
+offset_top = 22.0
+offset_right = -39.0
+offset_bottom = 85.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Exit
+"
+
+[connection signal="pressed" from="Hotel/Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="Door/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Door/Exit" to="." method="_on_exit_pressed"]

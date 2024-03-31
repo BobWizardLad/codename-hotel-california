@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://d1fg8ja3fbfom"]
+[gd_scene load_steps=18 format=3 uid="uid://d1fg8ja3fbfom"]
 
 [ext_resource type="PackedScene" uid="uid://cu1fwe52xa2il" path="res://scenes/Player.tscn" id="1_1f0os"]
 [ext_resource type="Script" path="res://assets/scripts/Game_Controller.gd" id="1_6i7ao"]
@@ -13,7 +13,9 @@
 [ext_resource type="PackedScene" uid="uid://b2iu4yxtq2u5e" path="res://scenes/GameLevel.tscn" id="9_1lbfo"]
 [ext_resource type="PackedScene" uid="uid://djs4ng2baukv4" path="res://scenes/player_ui.tscn" id="10_r81w4"]
 [ext_resource type="Script" path="res://assets/scripts/Jukebox.gd" id="13_mnsg3"]
+[ext_resource type="Script" path="res://assets/scripts/FXPlayer.gd" id="14_ouok7"]
 [ext_resource type="PackedScene" uid="uid://br81f2d2733iv" path="res://scenes/Credits.tscn" id="14_qc7vg"]
+[ext_resource type="PackedScene" uid="uid://duju8xr76r362" path="res://scenes/introduction.tscn" id="16_itspc"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ou1tv"]
 
@@ -170,8 +172,14 @@ shape = SubResource("BoxShape3D_ou1tv")
 volume_db = -10.0
 script = ExtResource("13_mnsg3")
 
+[node name="FXPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -10.0
+script = ExtResource("14_ouok7")
+
 [node name="Credits" parent="." instance=ExtResource("14_qc7vg")]
 visible = false
+
+[node name="Introduction" parent="." instance=ExtResource("16_itspc")]
 
 [connection signal="child_order_changed" from="." to="NavigationService" method="_on_game_child_order_changed"]
 [connection signal="artifact_pickup" from="Player" to="." method="_on_player_artifact_pickup"]
