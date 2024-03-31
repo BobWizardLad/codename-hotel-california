@@ -22,6 +22,12 @@ mage_artifact_get = false
 [node name="Player" parent="." groups=["Player"] instance=ExtResource("1_1f0os")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 1, 0)
 
+[node name="CombatComponent" parent="Player" index="6"]
+FIGHTER_FOCUS_MAX = 8
+ROUGE_FOCUS_MAX = 5
+MAGE_FOCUS_MAX = 6
+PALADIN_FOCUS_MAX = 5
+
 [node name="UnitController" type="Node3D" parent="."]
 script = ExtResource("3_nt3wb")
 
@@ -54,6 +60,16 @@ script = ExtResource("8_r6v64")
 [node name="HelpOverlay" parent="PlayerUI" index="4"]
 visible = true
 
+[node name="RestoreOverlay" type="ColorRect" parent="PlayerUI"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+
 [node name="TextOverlay" parent="." instance=ExtResource("5_4vo3a")]
 visible = false
 
@@ -74,6 +90,9 @@ Mystic: all adjacent tiles AoE"
 [connection signal="popup_close" from="Player" to="PlayerUI" method="_on_player_popup_close"]
 [connection signal="popup_interact" from="Player" to="PlayerUI" method="_on_player_popup_interact"]
 [connection signal="portal_transition" from="Player" to="." method="_on_portal_transition"]
+[connection signal="prompt_text_overlay" from="Player" to="TextOverlay" method="_prompt_text_overlay"]
+[connection signal="restore_focus" from="Player" to="PlayerUI" method="_on_player_restore_focus"]
+[connection signal="restore_health" from="Player" to="PlayerUI" method="_on_player_restore_health"]
 [connection signal="turn_end" from="Player" to="TurnController" method="_player_turn_end"]
 [connection signal="attack_animate_call" from="Player/CombatComponent" to="PlayerUI/AnimatedSprite2D" method="_on_attack_anim"]
 [connection signal="mage_animate_call" from="Player/CombatComponent" to="PlayerUI/AnimatedSprite2D" method="_on_mage_focus_anim"]
@@ -94,6 +113,7 @@ Mystic: all adjacent tiles AoE"
 [connection signal="pressed" from="PlayerUI/PartyRight/MageControl/Attack" to="Player" method="_on_mage_attack"]
 [connection signal="pressed" from="PlayerUI/PartyRight/MageControl/FocusAttack" to="Player" method="_on_mage_focus_attack"]
 [connection signal="pressed" from="PlayerUI/PartyRight/SkipTurn" to="Player" method="_on_skip_turn_pressed"]
+[connection signal="pressed" from="PlayerUI/PartyRight/SkipTurn" to="PlayerUI" method="_on_skip_turn_pressed"]
 
 [editable path="Player"]
 [editable path="PlayerUI"]

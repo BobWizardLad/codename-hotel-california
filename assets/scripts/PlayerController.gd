@@ -19,6 +19,9 @@ signal turn_end
 signal popup_interact
 signal popup_close
 signal portal_transition
+signal restore_health
+signal restore_focus
+signal prompt_text_overlay
 
 var fighter_is_active: bool = false
 var mage_is_active: bool = false
@@ -32,12 +35,16 @@ var paladin_has_attacked: bool = false
 var is_on_turn: bool
 var has_moved: bool = false
 var looking_at_popup: bool = false
+var last_door_location: Vector3i
+var revive_life: int # Health player will come back with: zero means game over
 
 # Tweens
 var motion_tween
 
 func _ready():
 	add_to_group("Player")
+	last_door_location = position
+	revive_life = 75
 
 # returns true if persona has attacked when it needs to, or if mage is inactive
 # else remove false
@@ -95,6 +102,15 @@ func _process(_delta):
 	elif looking_at_popup == true:
 		emit_signal("popup_close")
 		looking_at_popup = false
+		
+	if COMBAT_COMPONENT.health == 0:
+		if revive_life > 0:
+			emit_signal("prompt_text_overlay", "You Died?...", 2)
+			position = last_door_location
+			COMBAT_COMPONENT.health = revive_life
+			revive_life -= 25
+		else:
+			pass # Throw game over screen
 
 func _input(event):
 	if is_on_turn:
@@ -107,10 +123,12 @@ func _input(event):
 		if event.is_action_pressed("Interact") and CAST_FORWARD.is_colliding() and CAST_FORWARD.get_collider().is_in_group("IceMachines"):
 			emit_signal("popup_close")
 			COMBAT_COMPONENT.restore_focus()
+			emit_signal("restore_focus")
 			# remove coin
 		if event.is_action_pressed("Interact") and CAST_FORWARD.is_colliding() and CAST_FORWARD.get_collider().is_in_group("SodaMachines"):
 			emit_signal("popup_close")
 			COMBAT_COMPONENT.restore_health()
+			emit_signal("restore_health")
 			# remove coin
 
 func _on_fighter_attack():
@@ -151,6 +169,7 @@ func _on_mage_focus_attack():
 			COMBAT_COMPONENT.mage_focus_attack(CAST_LEFT.get_collider().get_parent().find_child("CombatComponent"))
 		if CAST_RIGHT.is_colliding() and CAST_RIGHT.get_collider().get_parent().find_child("CombatComponent") != null:
 			COMBAT_COMPONENT.mage_focus_attack(CAST_RIGHT.get_collider().get_parent().find_child("CombatComponent"))
+		COMBAT_COMPONENT.mage_focus -= 1 # Making an exception here for mage atk
 		mage_has_attacked = true
 
 func _on_paladin_focus_attack():
@@ -215,6 +234,7 @@ func _on_skip_turn_pressed():
 	on_turn_end()
 # Change state to reflect a portal transition
 func portal_transitionals():
+	last_door_location = position
 	fighter_is_active = false
 	rouge_is_active = false
 	paladin_is_active = false

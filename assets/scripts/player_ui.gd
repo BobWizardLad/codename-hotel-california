@@ -5,6 +5,7 @@ extends Control
 
 # Child Nodes
 @onready var POPUP_DIALOG: Label = $PopupDialog
+@onready var RESTORE_OVERLAY: ColorRect = $RestoreOverlay
 @onready var HEALTH: TextureProgressBar = $BottomPanel/Health
 @onready var FOCUS_FIGHTER: TextureProgressBar = $PartyLeft/FighterFocus
 @onready var FOCUS_ROUGE: TextureProgressBar = $PartyLeft/RougeFocus
@@ -16,6 +17,9 @@ extends Control
 @onready var ROUGE_STATE: TextureRect = $PartyLeft/Rouge
 @onready var MAGE_STATE: TextureRect = $PartyRight/Mage
 @onready var PALADIN_STATE: TextureRect = $PartyRight/Paladin
+
+var color_tween: Tween
+var color_tween_factor: float = 0.6
 
 # Signals
 signal fighter_attack
@@ -80,3 +84,25 @@ func _on_help_pressed():
 		HELP_OVERLAY.hide()
 	else:
 		HELP_OVERLAY.show()
+
+func _on_player_restore_focus():
+	color_tween = get_tree().create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN_OUT)
+	color_tween.tween_property(RESTORE_OVERLAY, "color", Color(0.0, 0.0, 1.0, 0.7), color_tween_factor)
+	RESTORE_OVERLAY.show()
+	await color_tween.finished
+	RESTORE_OVERLAY.hide()
+	RESTORE_OVERLAY.color = Color(1.0, 1.0, 1.0, 0.0)
+
+func _on_player_restore_health():
+	color_tween = get_tree().create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN_OUT)
+	color_tween.tween_property(RESTORE_OVERLAY, "color", Color(0.0, 1.0, 0.0, 0.7), color_tween_factor)
+	RESTORE_OVERLAY.show()
+	await color_tween.finished
+	RESTORE_OVERLAY.hide()
+	RESTORE_OVERLAY.color = Color(1.0, 1.0, 1.0, 0.0)
+
+
+func _on_skip_turn_pressed():
+	_on_player_popup_interact("Turn Skipped...")
+	await get_tree().create_timer(1.0).timeout
+	_on_player_popup_close()

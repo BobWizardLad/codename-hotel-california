@@ -70,7 +70,7 @@ collide_with_areas = true
 [node name="CombatComponent" type="Node" parent="."]
 script = ExtResource("3_x0ymg")
 HEALTH_MAX = 120
-POWER = 10
+POWER = 8
 
 [node name="Area" type="Area3D" parent="."]
 priority = 1

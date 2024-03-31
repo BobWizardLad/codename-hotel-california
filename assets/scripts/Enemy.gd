@@ -32,8 +32,6 @@ func set_target(target_val: Vector3i):
 func animate_death():
 	SPRITE.sprite_frames = animation_death
 	SPRITE.play()
-	await SPRITE.animation_finished
-	queue_free()
 
 # move_step takes a target location and will move the enemy towards it
 # target location is detemined by the greatest distance to travel. i.e. if

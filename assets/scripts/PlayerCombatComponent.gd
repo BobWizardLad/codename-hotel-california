@@ -2,9 +2,9 @@ extends Node
 
 @export var HEALTH_MAX: int = 100
 
-@export var FIGHTER_POWER: int = 20
+@export var FIGHTER_POWER: int = 25
 @export var MAGE_POWER: int = 17
-@export var MAGE_FOCUS_POWER: int = 25
+@export var MAGE_FOCUS_POWER: int = 30
 @export var ROUGE_POWER: int = 17
 @export var PALADIN_POWER: int = 20
 @export var PALADIN_FOCUS_POWER: int = 30
@@ -123,7 +123,6 @@ func rouge_focus_attack(target: Node) -> bool:
 func mage_focus_attack(target: Node) -> bool:
 	if target.name == "CombatComponent":
 		if mage_focus > 0:
-			mage_focus -= 1
 			emit_signal("mage_animate_call")
 			target.take_damage(MAGE_FOCUS_POWER)
 			return true

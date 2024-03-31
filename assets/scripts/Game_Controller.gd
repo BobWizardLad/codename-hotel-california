@@ -62,16 +62,16 @@ func _on_portal_transition():
 	
 	if persona == 0:
 		PLAYER.fighter_is_active = true
-		message = "The mind of the Beserk takes hold..."
+		message = "The persona of the Beserk takes hold..."
 	elif persona == 1:
 		PLAYER.rouge_is_active = true
-		message = "The mind of the Rouge takes hold..."
+		message = "The persona of the Rouge takes hold..."
 	elif persona == 2:
 		PLAYER.paladin_is_active = true
-		message = "The mind of the Holy takes hold..."
+		message = "The persona of the Holy takes hold..."
 	elif persona == 3:
 		PLAYER.mage_is_active = true
-		message = "The mind of the Mystic takes hold..."
+		message = "The persona of the Mystic takes hold..."
 	else:
 		pass
 	
