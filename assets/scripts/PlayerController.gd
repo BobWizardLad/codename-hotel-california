@@ -32,6 +32,8 @@ var rouge_has_attacked: bool = false
 var mage_has_attacked: bool = false
 var paladin_has_attacked: bool = false
 
+var tokens: int
+
 var is_on_turn: bool
 var has_moved: bool = false
 var looking_at_popup: bool = false
@@ -98,6 +100,10 @@ func _process(_delta):
 	elif CAST_FORWARD.is_colliding() and CAST_FORWARD.get_collider().is_in_group("SodaMachines"):
 		emit_signal("popup_interact", "Soda is healthy... right? [F]")
 		looking_at_popup = true
+	
+	if $Area.has_overlapping_areas() and $Area.get_overlapping_areas().get_parent().is_in_group("Coins"):
+		
+		$Area.get_overlapping_areas().get_parent().queue_free()
 	
 	elif looking_at_popup == true:
 		emit_signal("popup_close")
