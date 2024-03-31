@@ -101,9 +101,9 @@ func _process(_delta):
 		emit_signal("popup_interact", "Soda is healthy... right? [F]")
 		looking_at_popup = true
 	
-	if $Area.has_overlapping_areas() and $Area.get_overlapping_areas().get_parent().is_in_group("Coins"):
-		
-		$Area.get_overlapping_areas().get_parent().queue_free()
+	elif $Area.has_overlapping_areas() and $Area.get_overlapping_areas()[0].get_parent().is_in_group("Coins"):
+		tokens += 1
+		$Area.get_overlapping_areas()[0].get_parent().queue_free()
 	
 	elif looking_at_popup == true:
 		emit_signal("popup_close")
@@ -121,21 +121,24 @@ func _process(_delta):
 func _input(event):
 	if is_on_turn:
 		player_move(event)
+		# Portals
 		if event.is_action_pressed("Interact") and CAST_FORWARD.is_colliding() and CAST_FORWARD.get_collider().is_in_group("Portals"):
 			emit_signal("popup_close")
 			CAST_FORWARD.get_collider().warp(self)
 			portal_transitionals()
 			emit_signal("portal_transition")
-		if event.is_action_pressed("Interact") and CAST_FORWARD.is_colliding() and CAST_FORWARD.get_collider().is_in_group("IceMachines"):
+		# Ice Machine
+		if tokens > 0 and event.is_action_pressed("Interact") and CAST_FORWARD.is_colliding() and CAST_FORWARD.get_collider().is_in_group("IceMachines"):
 			emit_signal("popup_close")
 			COMBAT_COMPONENT.restore_focus()
 			emit_signal("restore_focus")
-			# remove coin
-		if event.is_action_pressed("Interact") and CAST_FORWARD.is_colliding() and CAST_FORWARD.get_collider().is_in_group("SodaMachines"):
+			tokens -= 1
+		# Soda Machine
+		if tokens > 0 and event.is_action_pressed("Interact") and CAST_FORWARD.is_colliding() and CAST_FORWARD.get_collider().is_in_group("SodaMachines"):
 			emit_signal("popup_close")
 			COMBAT_COMPONENT.restore_health()
 			emit_signal("restore_health")
-			# remove coin
+			tokens -= 1
 
 func _on_fighter_attack():
 	if fighter_is_active == true and fighter_has_attacked == false and CAST_FORWARD.is_colliding() and CAST_FORWARD.get_collider().get_parent().get_parent().name == "UnitController":

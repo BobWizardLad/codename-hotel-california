@@ -12,6 +12,8 @@ extends Control
 @onready var FOCUS_MAGE: TextureProgressBar = $PartyRight/MageFocus
 @onready var FOCUS_PALADIN: TextureProgressBar = $PartyRight/PaladinFocus
 @onready var HELP_OVERLAY: TextureRect = $HelpOverlay
+@onready var TOKEN_DISPLAY: HBoxContainer = $TokenDisplay
+@onready var TOKEN_COUNT: Label = $TokenDisplay/Count
 
 @onready var FIGHTER_STATE: TextureRect = $PartyLeft/Fighter
 @onready var ROUGE_STATE: TextureRect = $PartyLeft/Rouge
@@ -40,6 +42,7 @@ signal skip_turn
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	POPUP_DIALOG.hide()
+	TOKEN_DISPLAY.hide()
 	
 	FOCUS_FIGHTER.max_value = PLAYER.find_child("CombatComponent").FIGHTER_FOCUS_MAX
 	FOCUS_ROUGE.max_value = PLAYER.find_child("CombatComponent").ROUGE_FOCUS_MAX
@@ -53,6 +56,7 @@ func _process(delta):
 	FOCUS_ROUGE.value = PLAYER.find_child("CombatComponent").rouge_focus
 	FOCUS_MAGE.value = PLAYER.find_child("CombatComponent").mage_focus
 	FOCUS_PALADIN.value = PLAYER.find_child("CombatComponent").paladin_focus
+	TOKEN_COUNT.text = String.num_int64(PLAYER.tokens)
 	
 	if PLAYER.fighter_is_active:
 		FIGHTER_STATE.texture.region = Rect2(48, 96, 32, 32)
@@ -101,8 +105,13 @@ func _on_player_restore_health():
 	RESTORE_OVERLAY.hide()
 	RESTORE_OVERLAY.color = Color(1.0, 1.0, 1.0, 0.0)
 
-
 func _on_skip_turn_pressed():
 	_on_player_popup_interact("Turn Skipped...")
 	await get_tree().create_timer(1.0).timeout
 	_on_player_popup_close()
+
+func _on_inventory_pressed():
+	if TOKEN_DISPLAY.visible:
+		TOKEN_DISPLAY.hide()
+	else:
+		TOKEN_DISPLAY.show()

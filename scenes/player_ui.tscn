@@ -1,10 +1,11 @@
-[gd_scene load_steps=41 format=3 uid="uid://djs4ng2baukv4"]
+[gd_scene load_steps=42 format=3 uid="uid://djs4ng2baukv4"]
 
 [ext_resource type="Script" path="res://assets/scripts/player_ui.gd" id="1_xygem"]
 [ext_resource type="Texture2D" uid="uid://d3a7wwiqkur6j" path="res://assets/sprites/UI_spritesheet.png" id="2_tujh6"]
 [ext_resource type="SpriteFrames" uid="uid://ctfbmwlfy2but" path="res://assets/sprite_frames/slash_01.tres" id="3_l6qgg"]
-[ext_resource type="Script" path="res://scenes/Attack_Animations.gd" id="4_exc6q"]
+[ext_resource type="Script" path="res://assets/scripts/Attack_Animations.gd" id="4_exc6q"]
 [ext_resource type="Texture2D" uid="uid://bk5sdblwu0b1d" path="res://assets/sprites/help.png" id="5_ax7f5"]
+[ext_resource type="Texture2D" uid="uid://dw3iusj58wlwn" path="res://assets/sprites/coin_stock.png" id="6_bwws7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6hjtf"]
 atlas = ExtResource("2_tujh6")
@@ -502,3 +503,27 @@ scale = Vector2(9.26563, 9.26563)
 sprite_frames = ExtResource("3_l6qgg")
 frame_progress = 0.239889
 script = ExtResource("4_exc6q")
+
+[node name="TokenDisplay" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.806424
+anchor_top = 0.0231481
+anchor_right = 0.855903
+anchor_bottom = 0.0231481
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+
+[node name="Graphic" type="TextureRect" parent="TokenDisplay"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+texture = ExtResource("6_bwws7")
+
+[node name="Count" type="Label" parent="TokenDisplay"]
+custom_minimum_size = Vector2(50, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+vertical_alignment = 2
+
+[connection signal="pressed" from="PartyRight/Inventory" to="." method="_on_inventory_pressed"]
