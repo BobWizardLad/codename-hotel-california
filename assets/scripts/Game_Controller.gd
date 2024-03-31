@@ -1,5 +1,6 @@
 extends Node3D
 
+@onready var PLAYER_UI := $PlayerUI
 @onready var UNIT_CONTROLLER := $UnitController
 @onready var NAVIGATION_SERVICE := $NavigationService
 @onready var TURN_CONTROLLER := $TurnController
@@ -24,6 +25,13 @@ func _ready():
 	
 	TURN_CONTROLLER.emit_signal("take_player_turn")
 	_on_portal_transition()
+
+func _input(event):
+	if event.is_action_pressed("ui_cancel"):
+		if PLAYER_UI.HELP_OVERLAY.visible:
+			PLAYER_UI.HELP_OVERLAY.hide()
+		else:
+			PLAYER_UI.HELP_OVERLAY.show()
 
 func _on_portal_transition():
 	var message

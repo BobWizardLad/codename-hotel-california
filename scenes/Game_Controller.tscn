@@ -14,6 +14,10 @@
 
 [node name="GameController" type="Node3D"]
 script = ExtResource("1_6i7ao")
+fighter_artifact_get = false
+rouge_artifact_get = false
+paladin_artifact_get = false
+mage_artifact_get = false
 
 [node name="Player" parent="." groups=["Player"] instance=ExtResource("1_1f0os")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 1, 0)
@@ -47,11 +51,24 @@ script = ExtResource("8_r6v64")
 
 [node name="PlayerUI" parent="." instance=ExtResource("10_r81w4")]
 
+[node name="HelpOverlay" parent="PlayerUI" index="4"]
+visible = true
+
 [node name="TextOverlay" parent="." instance=ExtResource("5_4vo3a")]
 visible = false
 
 [node name="GameLevel" parent="." instance=ExtResource("9_1lbfo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -1)
+
+[node name="DoorGuide" parent="GameLevel" index="8"]
+text = "Open doors like this one will take you to another floor! Walk up and try now..."
+
+[node name="PartyGuide3" parent="GameLevel" index="11"]
+text = "Each Personality has a focus ability
+Rouge: Poison Attack
+Beserker: Free Attack
+Holy: Defense Down
+Mystic: all adjacent tiles AoE"
 
 [connection signal="child_order_changed" from="." to="NavigationService" method="_on_game_child_order_changed"]
 [connection signal="popup_close" from="Player" to="PlayerUI" method="_on_player_popup_close"]
