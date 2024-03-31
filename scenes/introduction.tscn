@@ -71,14 +71,16 @@ offset_right = -218.0
 offset_bottom = 259.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Who Knows, perhaps the key to restoring your shattered mind lies in this hotel. Despite being shattered, your mind seems to be more pwerful than it was before. If only you could wrest control over it once again..."
+text = "Who Knows, perhaps the key to restoring your shattered mind lies in this hotel. Despite being shattered, your mind seems to be more powerful than it was before. If only you could wrest control over it once again..."
 horizontal_alignment = 1
 autowrap_mode = 2
 
 [node name="Continue" type="Button" parent="Hotel"]
 layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
+offset_left = 656.0
+offset_top = 562.0
+offset_right = 799.0
+offset_bottom = 618.0
 text = "Continue"
 
 [node name="Door" type="TextureRect" parent="."]
