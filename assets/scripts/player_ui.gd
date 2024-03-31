@@ -14,12 +14,14 @@ extends Control
 @onready var HELP_OVERLAY: TextureRect = $HelpOverlay
 @onready var TOKEN_DISPLAY: HBoxContainer = $TokenDisplay
 @onready var TOKEN_COUNT: Label = $TokenDisplay/Count
+@onready var TIMER := $Timer
 
 @onready var FIGHTER_ARTIFACT: TextureRect = $BottomPanel/FighterArtifact/Artifact
 @onready var ROUGE_ARTIFACT: TextureRect = $BottomPanel/RougeArtifact/Artifact
 @onready var PALADIN_ARTIFACT: TextureRect = $BottomPanel/PaladinArtifact/Artifact
 @onready var MAGE_ARTIFACT: TextureRect = $BottomPanel/MageArtifact/Artifact
 
+@onready var PORTRAIT := $BottomPanel/Portrait
 @onready var FIGHTER_STATE: TextureRect = $PartyLeft/Fighter
 @onready var ROUGE_STATE: TextureRect = $PartyLeft/Rouge
 @onready var MAGE_STATE: TextureRect = $PartyRight/Mage
@@ -50,7 +52,6 @@ signal skip_turn
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	POPUP_DIALOG.hide()
-	TOKEN_DISPLAY.hide()
 	
 	FOCUS_FIGHTER.max_value = PLAYER.find_child("CombatComponent").FIGHTER_FOCUS_MAX
 	FOCUS_ROUGE.max_value = PLAYER.find_child("CombatComponent").ROUGE_FOCUS_MAX
@@ -58,7 +59,7 @@ func _ready():
 	FOCUS_PALADIN.max_value = PLAYER.find_child("CombatComponent").PALADIN_FOCUS_MAX
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	HEALTH.value = PLAYER.find_child("CombatComponent").health
 	FOCUS_FIGHTER.value = PLAYER.find_child("CombatComponent").fighter_focus
 	FOCUS_ROUGE.value = PLAYER.find_child("CombatComponent").rouge_focus
@@ -99,6 +100,16 @@ func _process(delta):
 		MAGE_STATE.texture.region = Rect2(80, 128, 32, 32)
 	else:
 		MAGE_STATE.texture.region = Rect2(112, 128, 32, 32)
+
+func portrait_animation():
+	var attempt = randi_range(0, 100)
+	if attempt < 20:
+		PORTRAIT.texture.region = Rect2(144, 64, 32, 32)
+	if attempt > 80:
+		PORTRAIT.texture.region = Rect2(112, 64, 32, 32)
+	else:
+		PORTRAIT.texture.region = Rect2(112, 96, 32, 32)
+
 
 func _on_player_popup_interact(msg: String):
 	POPUP_DIALOG.text = msg 

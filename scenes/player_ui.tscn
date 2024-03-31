@@ -580,4 +580,8 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 25
 vertical_alignment = 2
 
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
 [connection signal="pressed" from="PartyRight/Inventory" to="." method="_on_inventory_pressed"]
+[connection signal="timeout" from="Timer" to="." method="portrait_animation"]

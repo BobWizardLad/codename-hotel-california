@@ -111,6 +111,6 @@ func _on_player_artifact_pickup(identity: String):
 	else:
 		return
 
-func _on_credits_area_entered(area):
+func _on_credits_area_entered(_area):
 	CREDITS.show()
 	JUKEBOX._play_end_credits()

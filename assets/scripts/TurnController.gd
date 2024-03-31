@@ -13,7 +13,7 @@ func _ready():
 	player_turn = true
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	pass
 
 func _player_turn_end():

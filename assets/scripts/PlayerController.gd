@@ -225,6 +225,8 @@ func player_move(event):
 		motion_tween.tween_property(self, "transform", transform.translated(CAMERA.get_global_transform().basis.z * 1 * GRID_SCALE), TWEEN_FACTOR)
 		await motion_tween.finished
 		has_moved = true
+	elif event.is_action_pressed("Move_Back") and CAST_BACKWARDS.is_colliding():
+		FX_PLAYER.on_wall_collide()
 	elif event.is_action_pressed("Move_Left") and not CAST_LEFT.is_colliding():
 		motion_tween = create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN_OUT)
 		motion_tween.tween_property(self, "transform", transform.translated(CAMERA.get_global_transform().basis.x * -1 * GRID_SCALE), TWEEN_FACTOR)
