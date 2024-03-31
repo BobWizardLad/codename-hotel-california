@@ -86,3 +86,25 @@ func _process(_delta):
 func sprite_facing():
 	for x in UNIT_CONTROLLER.get_children():
 		x.find_child("Sprite").look_at(PLAYER.position)
+
+
+func _on_player_artifact_pickup(identity: String):
+	print("SIGNAL PASSED")
+	if identity == "Fighter":
+		fighter_artifact_get = true
+		PLAYER_UI.FIGHTER_ARTIFACT.show()
+		TEXT_OVERLAY._prompt_text_overlay("You have aquired the beserker artifact", 2.5)
+	elif identity == "Rouge":
+		rouge_artifact_get = true
+		PLAYER_UI.ROUGE_ARTIFACT.show()
+		TEXT_OVERLAY._prompt_text_overlay("You have aquired the rouge artifact", 2.5)
+	elif identity == "Paladin":
+		paladin_artifact_get = true
+		PLAYER_UI.PALADIN_ARTIFACT.show()
+		TEXT_OVERLAY._prompt_text_overlay("You have aquired the holy artifact", 2.5)
+	elif identity == "Mage":
+		mage_artifact_get = true
+		PLAYER_UI.MAGE_ARTIFACT.show()
+		TEXT_OVERLAY._prompt_text_overlay("You have aquired the mystic artifact", 2.5)
+	else:
+		return

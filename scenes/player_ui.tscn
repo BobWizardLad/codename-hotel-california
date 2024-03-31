@@ -1,7 +1,8 @@
-[gd_scene load_steps=42 format=3 uid="uid://djs4ng2baukv4"]
+[gd_scene load_steps=47 format=3 uid="uid://djs4ng2baukv4"]
 
 [ext_resource type="Script" path="res://assets/scripts/player_ui.gd" id="1_xygem"]
 [ext_resource type="Texture2D" uid="uid://d3a7wwiqkur6j" path="res://assets/sprites/UI_spritesheet.png" id="2_tujh6"]
+[ext_resource type="Texture2D" uid="uid://drer81oth8v1a" path="res://assets/sprites/artifacts.png" id="3_j4yj4"]
 [ext_resource type="SpriteFrames" uid="uid://ctfbmwlfy2but" path="res://assets/sprite_frames/slash_01.tres" id="3_l6qgg"]
 [ext_resource type="Script" path="res://assets/scripts/Attack_Animations.gd" id="4_exc6q"]
 [ext_resource type="Texture2D" uid="uid://bk5sdblwu0b1d" path="res://assets/sprites/help.png" id="5_ax7f5"]
@@ -146,6 +147,22 @@ region = Rect2(112, 96, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_xea4s"]
 atlas = ExtResource("2_tujh6")
 region = Rect2(0, 112, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3p32x"]
+atlas = ExtResource("3_j4yj4")
+region = Rect2(0, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kfo01"]
+atlas = ExtResource("3_j4yj4")
+region = Rect2(0, 12, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mbcqc"]
+atlas = ExtResource("3_j4yj4")
+region = Rect2(12, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_37npl"]
+atlas = ExtResource("3_j4yj4")
+region = Rect2(12, 12, 12, 12)
 
 [node name="PlayerUI" type="Control"]
 layout_mode = 3
@@ -422,7 +439,7 @@ offset_bottom = 154.0
 grow_horizontal = 2
 texture = SubResource("AtlasTexture_x8mjx")
 
-[node name="Artifact01" type="TextureRect" parent="BottomPanel"]
+[node name="FighterArtifact" type="TextureRect" parent="BottomPanel"]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -434,7 +451,16 @@ offset_bottom = -4.0
 grow_vertical = 0
 texture = SubResource("AtlasTexture_xea4s")
 
-[node name="Artifact02" type="TextureRect" parent="BottomPanel"]
+[node name="Artifact" type="TextureRect" parent="BottomPanel/FighterArtifact"]
+visible = false
+layout_mode = 0
+offset_left = 11.0
+offset_top = 11.0
+offset_right = 51.0
+offset_bottom = 51.0
+texture = SubResource("AtlasTexture_3p32x")
+
+[node name="RougeArtifact" type="TextureRect" parent="BottomPanel"]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -446,7 +472,16 @@ offset_bottom = -4.0
 grow_vertical = 0
 texture = SubResource("AtlasTexture_xea4s")
 
-[node name="Artifact03" type="TextureRect" parent="BottomPanel"]
+[node name="Artifact" type="TextureRect" parent="BottomPanel/RougeArtifact"]
+visible = false
+layout_mode = 0
+offset_left = 12.0
+offset_top = 12.0
+offset_right = 50.0
+offset_bottom = 50.0
+texture = SubResource("AtlasTexture_kfo01")
+
+[node name="PaladinArtifact" type="TextureRect" parent="BottomPanel"]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -458,7 +493,16 @@ offset_bottom = -5.0
 grow_vertical = 0
 texture = SubResource("AtlasTexture_xea4s")
 
-[node name="Artifact04" type="TextureRect" parent="BottomPanel"]
+[node name="Artifact" type="TextureRect" parent="BottomPanel/PaladinArtifact"]
+visible = false
+layout_mode = 0
+offset_left = 13.0
+offset_top = 14.0
+offset_right = 49.0
+offset_bottom = 50.0
+texture = SubResource("AtlasTexture_mbcqc")
+
+[node name="MageArtifact" type="TextureRect" parent="BottomPanel"]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -469,6 +513,15 @@ offset_right = 272.0
 offset_bottom = -4.0
 grow_vertical = 0
 texture = SubResource("AtlasTexture_xea4s")
+
+[node name="Artifact" type="TextureRect" parent="BottomPanel/MageArtifact"]
+visible = false
+layout_mode = 0
+offset_left = 12.0
+offset_top = 12.0
+offset_right = 50.0
+offset_bottom = 50.0
+texture = SubResource("AtlasTexture_37npl")
 
 [node name="PopupDialog" type="Label" parent="."]
 visible = false
@@ -498,6 +551,7 @@ mouse_filter = 2
 texture = ExtResource("5_ax7f5")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
 position = Vector2(576, 410)
 scale = Vector2(9.26563, 9.26563)
 sprite_frames = ExtResource("3_l6qgg")

@@ -22,6 +22,7 @@ signal portal_transition
 signal restore_health
 signal restore_focus
 signal prompt_text_overlay
+signal artifact_pickup
 
 var fighter_is_active: bool = false
 var mage_is_active: bool = false
@@ -100,7 +101,9 @@ func _process(_delta):
 	elif CAST_FORWARD.is_colliding() and CAST_FORWARD.get_collider().is_in_group("SodaMachines"):
 		emit_signal("popup_interact", "Soda is healthy... right? [F]")
 		looking_at_popup = true
-	
+	elif $Area.has_overlapping_areas() and $Area.get_overlapping_areas()[0].get_parent().is_in_group("Artifacts"):
+		emit_signal("artifact_pickup", $Area.get_overlapping_areas()[0].get_parent().identity)
+		$Area.get_overlapping_areas()[0].get_parent().queue_free()
 	elif $Area.has_overlapping_areas() and $Area.get_overlapping_areas()[0].get_parent().is_in_group("Coins"):
 		tokens += 1
 		$Area.get_overlapping_areas()[0].get_parent().queue_free()

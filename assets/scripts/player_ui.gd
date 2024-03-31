@@ -15,6 +15,11 @@ extends Control
 @onready var TOKEN_DISPLAY: HBoxContainer = $TokenDisplay
 @onready var TOKEN_COUNT: Label = $TokenDisplay/Count
 
+@onready var FIGHTER_ARTIFACT: TextureRect = $BottomPanel/FighterArtifact/Artifact
+@onready var ROUGE_ARTIFACT: TextureRect = $BottomPanel/RougeArtifact/Artifact
+@onready var PALADIN_ARTIFACT: TextureRect = $BottomPanel/PaladinArtifact/Artifact
+@onready var MAGE_ARTIFACT: TextureRect = $BottomPanel/MageArtifact/Artifact
+
 @onready var FIGHTER_STATE: TextureRect = $PartyLeft/Fighter
 @onready var ROUGE_STATE: TextureRect = $PartyLeft/Rouge
 @onready var MAGE_STATE: TextureRect = $PartyRight/Mage

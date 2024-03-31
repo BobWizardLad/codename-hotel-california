@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://cuk7aatc1s117"]
+
+[ext_resource type="Script" path="res://assets/scripts/ArtifactPickup.gd" id="1_mb0gf"]
+[ext_resource type="Texture2D" uid="uid://drer81oth8v1a" path="res://assets/sprites/artifacts.png" id="2_mjfdu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wxrlj"]
+atlas = ExtResource("2_mjfdu")
+region = Rect2(0, 0, 12, 12)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lb83x"]
+
+[node name="ArtifactPickup" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0877181, 0)
+script = ExtResource("1_mb0gf")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0.138235, 0)
+texture_filter = 0
+texture = SubResource("AtlasTexture_wxrlj")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0700422, 0)
+shape = SubResource("BoxShape3D_lb83x")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+light_color = Color(1, 1, 0.282353, 1)
+omni_range = 1.418
+omni_attenuation = 0.34151

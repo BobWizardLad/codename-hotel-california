@@ -34,6 +34,12 @@ script = ExtResource("3_nt3wb")
 [node name="Enemy" parent="UnitController" instance=ExtResource("4_7apea")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 1, 18)
 
+[node name="Enemy13" parent="UnitController" instance=ExtResource("4_7apea")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 1, 60)
+
+[node name="Enemy15" parent="UnitController" instance=ExtResource("4_7apea")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 1, 82)
+
 [node name="Enemy11" parent="UnitController" instance=ExtResource("4_7apea")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 1, 48)
 
@@ -52,17 +58,32 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 1, 14)
 [node name="Enemy10" parent="UnitController" instance=ExtResource("5_m5xlv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 1, 36)
 
+[node name="Enemy16" parent="UnitController" instance=ExtResource("5_m5xlv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 1, 54)
+
 [node name="Enemy12" parent="UnitController" instance=ExtResource("5_m5xlv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 1, 52)
 
 [node name="Enemy7" parent="UnitController" instance=ExtResource("5_m5xlv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 1, 26)
 
+[node name="Enemy14" parent="UnitController" instance=ExtResource("5_m5xlv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.00044, 1, 82.0134)
+
 [node name="Enemy5" parent="UnitController" instance=ExtResource("6_fftqu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 1, 24)
 
 [node name="Enemy9" parent="UnitController" instance=ExtResource("6_fftqu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1, 40)
+
+[node name="Enemy17" parent="UnitController" instance=ExtResource("6_fftqu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 1, 70)
+
+[node name="Enemy18" parent="UnitController" instance=ExtResource("6_fftqu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 1, 70)
+
+[node name="Enemy19" parent="UnitController" instance=ExtResource("6_fftqu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1, 78)
 
 [node name="Enemy6" parent="UnitController" instance=ExtResource("6_fftqu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 1, 30)
@@ -95,10 +116,10 @@ visible = false
 [node name="GameLevel" parent="." instance=ExtResource("9_1lbfo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -1)
 
-[node name="DoorGuide" parent="GameLevel" index="8"]
+[node name="DoorGuide" parent="GameLevel" index="10"]
 text = "Open doors like this one will take you to another floor! Walk up and try now..."
 
-[node name="PartyGuide3" parent="GameLevel" index="11"]
+[node name="PartyGuide3" parent="GameLevel" index="13"]
 text = "Each Personality has a focus ability
 Rouge: Poison Attack
 Beserker: Free Attack
@@ -106,6 +127,7 @@ Holy: Defense Down
 Mystic: all adjacent tiles AoE"
 
 [connection signal="child_order_changed" from="." to="NavigationService" method="_on_game_child_order_changed"]
+[connection signal="artifact_pickup" from="Player" to="." method="_on_player_artifact_pickup"]
 [connection signal="popup_close" from="Player" to="PlayerUI" method="_on_player_popup_close"]
 [connection signal="popup_interact" from="Player" to="PlayerUI" method="_on_player_popup_interact"]
 [connection signal="portal_transition" from="Player" to="." method="_on_portal_transition"]
