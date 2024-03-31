@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b2iu4yxtq2u5e"]
+[gd_scene load_steps=14 format=3 uid="uid://b2iu4yxtq2u5e"]
 
 [ext_resource type="MeshLibrary" uid="uid://ckn3vcy2bt7nh" path="res://assets/meshes/dungeon_tiles.tres" id="1_d5qs0"]
 [ext_resource type="PackedScene" uid="uid://cw7vcg1gnank7" path="res://scenes/portal.tscn" id="2_0spk7"]
@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://do8qml2lqvisd" path="res://scenes/CoinPickup.tscn" id="5_8vuhk"]
 [ext_resource type="PackedScene" uid="uid://cuk7aatc1s117" path="res://scenes/ArtifactPickup.tscn" id="6_to80k"]
 [ext_resource type="Texture2D" uid="uid://drer81oth8v1a" path="res://assets/sprites/artifacts.png" id="7_teqos"]
+[ext_resource type="Texture2D" uid="uid://ccxtxu2nvstb8" path="res://assets/sprites/dogPainting.png" id="8_8tvsb"]
+[ext_resource type="Texture2D" uid="uid://dfanpdmk8difb" path="res://assets/sprites/dungeon-crawler-jam-2024-logo.png" id="9_rwhl0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5g08o"]
 atlas = ExtResource("7_teqos")
@@ -184,17 +186,14 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -11, 0
 [node name="CoinPickup13" parent="." instance=ExtResource("5_8vuhk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.0877181, 87)
 
-[node name="CoinPickup14" parent="." instance=ExtResource("5_8vuhk")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 17, 0.0877181, 79)
-
-[node name="CoinPickup16" parent="." instance=ExtResource("5_8vuhk")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 17, 0.0877181, 73)
-
 [node name="CoinPickup17" parent="." instance=ExtResource("5_8vuhk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 0.0877181, 59)
 
-[node name="CoinPickup15" parent="." instance=ExtResource("5_8vuhk")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 29, 0.0877181, 77)
+[node name="CoinPickup18" parent="." instance=ExtResource("5_8vuhk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29, 0.0877181, 59)
+
+[node name="CoinPickup19" parent="." instance=ExtResource("5_8vuhk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31, 0.0877181, 59)
 
 [node name="FighterArtifact" parent="." instance=ExtResource("6_to80k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0.088, 31)
@@ -215,3 +214,15 @@ graphic = SubResource("AtlasTexture_41uwy")
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 21, 0.088, 61)
 identity = "Paladin"
 graphic = SubResource("AtlasTexture_j5qs0")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(-1.09278e-08, 0, -0.25, 0, 0.25, 0, 0.25, 0, -1.09278e-08, -4.03244, 1, 7)
+shaded = true
+texture_filter = 1
+texture = ExtResource("8_8tvsb")
+
+[node name="Sprite3D2" type="Sprite3D" parent="."]
+transform = Transform3D(0.05, 0, -1.19209e-08, 0, 0.05, 0, 1.19209e-08, 0, 0.05, 28.9676, 1, 58)
+shaded = true
+texture_filter = 1
+texture = ExtResource("9_rwhl0")
