@@ -114,3 +114,6 @@ func _on_player_artifact_pickup(identity: String):
 func _on_credits_area_entered(_area):
 	CREDITS.show()
 	JUKEBOX._play_end_credits()
+
+func _on_player_game_over():
+	get_tree().reload_current_scene()

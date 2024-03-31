@@ -24,6 +24,7 @@ signal restore_health
 signal restore_focus
 signal prompt_text_overlay
 signal artifact_pickup
+signal game_over
 
 var fighter_is_active: bool = false
 var mage_is_active: bool = false
@@ -122,7 +123,7 @@ func _process(_delta):
 			COMBAT_COMPONENT.health = revive_life
 			revive_life -= 25
 		else:
-			pass # TODO Throw game over screen
+			emit_signal("game_over")
 
 func _input(event):
 	if is_on_turn:

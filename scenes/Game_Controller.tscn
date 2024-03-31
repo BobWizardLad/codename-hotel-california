@@ -183,6 +183,7 @@ visible = false
 
 [connection signal="child_order_changed" from="." to="NavigationService" method="_on_game_child_order_changed"]
 [connection signal="artifact_pickup" from="Player" to="." method="_on_player_artifact_pickup"]
+[connection signal="game_over" from="Player" to="." method="_on_player_game_over"]
 [connection signal="popup_close" from="Player" to="PlayerUI" method="_on_player_popup_close"]
 [connection signal="popup_interact" from="Player" to="PlayerUI" method="_on_player_popup_interact"]
 [connection signal="portal_transition" from="Player" to="." method="_on_portal_transition"]
