@@ -1,0 +1,87 @@
+[gd_scene load_steps=9 format=3 uid="uid://dejvq44wgmmpm"]
+
+[ext_resource type="Script" path="res://assets/scripts/Enemy.gd" id="1_el5j8"]
+[ext_resource type="SpriteFrames" uid="uid://do42vgvfndvhc" path="res://assets/sprite_frames/spite_death.tres" id="2_xxu8m"]
+[ext_resource type="Texture2D" uid="uid://810wnwvk5kdf" path="res://assets/sprites/lieSpite-Sheet.png" id="3_nns18"]
+[ext_resource type="Script" path="res://assets/scripts/CombatComponent.gd" id="4_pqc43"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5bjtd"]
+atlas = ExtResource("3_nns18")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ydjhc"]
+atlas = ExtResource("3_nns18")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lfbdv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5bjtd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ydjhc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dogcu"]
+
+[node name="Enemy" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, 2)
+script = ExtResource("1_el5j8")
+animation_death = ExtResource("2_xxu8m")
+
+[node name="Sprite" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(-1.66103e-07, 0, 3.8, 0, 3.8, 0, -3.8, 0, -1.66103e-07, 0, 0.12547, 0)
+centered = false
+offset = Vector2(-32, -30)
+flip_h = true
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_lfbdv")
+autoplay = "default"
+
+[node name="EnemyLight" type="OmniLight3D" parent="."]
+light_color = Color(0.564706, 0.364706, 0.929412, 1)
+light_energy = 0.2
+light_specular = 0.1
+omni_range = 2.0
+omni_attenuation = 1.03526
+omni_shadow_mode = 0
+
+[node name="CastNorth" type="RayCast3D" parent="."]
+target_position = Vector3(-1.5, 0, 0)
+collide_with_areas = true
+
+[node name="CastEast" type="RayCast3D" parent="."]
+target_position = Vector3(0, 0, -1.5)
+collide_with_areas = true
+
+[node name="CastSouth" type="RayCast3D" parent="."]
+target_position = Vector3(1.5, 0, 0)
+collide_with_areas = true
+
+[node name="CastWest" type="RayCast3D" parent="."]
+target_position = Vector3(0, 0, 1.5)
+collide_with_areas = true
+
+[node name="CombatComponent" type="Node" parent="."]
+script = ExtResource("4_pqc43")
+HEALTH_MAX = 420
+POWER = 20
+DOT_SEVERITY = 10
+
+[node name="Area" type="Area3D" parent="."]
+priority = 1
+
+[node name="Shape" type="CollisionShape3D" parent="Area"]
+transform = Transform3D(1.4, 0, 0, 0, 1.4, 0, 0, 0, 1.4, 0, 0, 0)
+shape = SubResource("BoxShape3D_dogcu")
+
+[node name="PlayerVisible" type="VisibleOnScreenNotifier3D" parent="."]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
+
+[connection signal="screen_entered" from="PlayerVisible" to="." method="_on_player_visible_screen_entered"]
+[connection signal="screen_exited" from="PlayerVisible" to="." method="_on_player_visible_screen_exited"]

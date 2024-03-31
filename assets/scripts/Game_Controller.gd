@@ -76,6 +76,7 @@ func _on_portal_transition():
 		pass
 	
 	TEXT_OVERLAY._prompt_text_overlay(message, 2.5)
+	valid_persona_range = []
 
 func _process(_delta):
 	sprite_facing()
