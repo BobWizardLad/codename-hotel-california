@@ -34,8 +34,14 @@ script = ExtResource("3_nt3wb")
 [node name="Enemy" parent="UnitController" instance=ExtResource("4_7apea")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 1, 18)
 
+[node name="Enemy11" parent="UnitController" instance=ExtResource("4_7apea")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 1, 48)
+
 [node name="Enemy4" parent="UnitController" instance=ExtResource("4_7apea")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 1, 28)
+
+[node name="Enemy8" parent="UnitController" instance=ExtResource("4_7apea")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1, 42)
 
 [node name="Enemy2" parent="UnitController" instance=ExtResource("5_m5xlv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 1, 22)
@@ -43,8 +49,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 1, 22)
 [node name="Enemy3" parent="UnitController" instance=ExtResource("5_m5xlv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 1, 14)
 
+[node name="Enemy10" parent="UnitController" instance=ExtResource("5_m5xlv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 1, 36)
+
+[node name="Enemy12" parent="UnitController" instance=ExtResource("5_m5xlv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 1, 52)
+
+[node name="Enemy7" parent="UnitController" instance=ExtResource("5_m5xlv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 1, 26)
+
 [node name="Enemy5" parent="UnitController" instance=ExtResource("6_fftqu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 1, 24)
+
+[node name="Enemy9" parent="UnitController" instance=ExtResource("6_fftqu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1, 40)
 
 [node name="Enemy6" parent="UnitController" instance=ExtResource("6_fftqu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 1, 30)
@@ -59,6 +77,7 @@ script = ExtResource("8_r6v64")
 
 [node name="HelpOverlay" parent="PlayerUI" index="4"]
 visible = true
+modulate = Color(1, 1, 1, 0.831373)
 
 [node name="RestoreOverlay" type="ColorRect" parent="PlayerUI"]
 visible = false
